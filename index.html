@@ -7,6 +7,16 @@
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,800;1,400&family=DM+Sans:wght@300;400;500&display=swap');
 
+#successPopup {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+#successPopup.show {
+  display: flex;
+  opacity: 1;
+}
+
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
   --cream: #F5F0E8;
@@ -25,14 +35,33 @@ function showSuccessPopup() {
     document.getElementById("successPopup").style.display = "flex";
   }, 500);
 
-  // reset form after submit
-  document.querySelector("form").reset();
+  document.querySelector(".contact-form form").reset();
 }
 
 function closePopup() {
   document.getElementById("successPopup").style.display = "none";
 }
 </script>
+
+function showSuccessPopup() {
+  const popup = document.getElementById("successPopup");
+  popup.style.display = "flex";
+
+  setTimeout(() => {
+    popup.classList.add("show");
+  }, 10);
+
+  document.querySelector(".contact-form form").reset();
+}
+
+function closePopup() {
+  const popup = document.getElementById("successPopup");
+  popup.classList.remove("show");
+
+  setTimeout(() => {
+    popup.style.display = "none";
+  }, 300);
+}
 /* ── NAV ── */
 nav {
   position: fixed; top: 0; width: 100%; z-index: 100;
