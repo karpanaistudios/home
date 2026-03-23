@@ -1,11 +1,202 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Karpanai Studios | Crafting Meaningful Brand Identities</title>
 <style>
+/* FORCE CENTER ALIGN */
+.carousel-slide blockquote,
+.carousel-slide blockquote p,
+.carousel-slide blockquote footer {
+  text-align: center !important;
+}
 
+/* Center the whole block */
+.carousel-slide blockquote {
+  margin: 0 auto;
+  max-width: 600px;
+}
+
+/* Center quote icon */
+.qmark {
+  display: block;
+  text-align: center !important;
+  margin: 0 auto 10px;
+}
+
+/* Fix the black name box alignment */
+.carousel-slide footer {
+  display: block;
+  text-align: center !important;
+}
+  .carousel-slide {
+  display: flex;
+  justify-content: center;
+}
+
+.carousel-slide blockquote {
+  text-align: center;
+  max-width: 600px; /* keeps text readable */
+  margin: 0 auto;
+}
+
+/* Center quote icon */
+.qmark {
+  display: block;
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+/* Center footer */
+.carousel-slide footer {
+  margin-top: 10px;
+  text-align: center;
+}
+.insights-section {
+  position: relative; /* required for divider */
+}
+@media (max-width: 900px) {
+  .insights-right {
+    border-left: none;
+    padding-left: 0;
+  }
+
+  .insights-left {
+    padding-right: 0;
+  }
+}
+/* Vertical Divider */
+.insights-right {
+  border-left: 2px solid rgba(196, 151, 58, 0.4);
+  padding-left: 3rem; /* spacing from divider */
+}
+
+.insights-left {
+  padding-right: 3rem; /* balance spacing */
+}
+  .story-img {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+/* Image */
+.story-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease; /* smooth zoom */
+}
+
+/* Hover zoom */
+.story-img:hover img {
+  transform: scale(1.08);
+}
+
+/* Gradient overlay */
+.story-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,0.6),
+    rgba(0,0,0,0.2),
+    rgba(0,0,0,0)
+  );
+  pointer-events: none;
+}
+body {
+  font-family: sans-serif;
+}
+
+/* CENTER ALIGN RIGHT SIDE */
+.insights-right {
+  text-align: center;
+}
+
+/* Center heading */
+.insights-right h2 {
+  text-align: center;
+}
+
+/* Center label */
+.insights-right .section-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+/* Center testimonial content */
+.carousel-wrapper {
+  margin: 0 auto;
+}
+.itag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border: 1px solid #d6b36a;
+  border-radius: 20px;
+  font-size: 0.85rem;
+}
+
+.itag i {
+  font-size: 0.8rem;
+}
+.insights-left {
+  text-align: center;
+}
+
+.insights-left .section-label {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.industry-tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem;
+}
+
+ 
+.insights-section {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 4rem;
+  padding: 5rem 5%;
+  background: var(--soft-bg);
+  align-items: start;
+}
+
+/* LEFT */
+.insights-left h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+/* RIGHT */
+.insights-right h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+/* Make testimonial align nicely */
+.insights-right .carousel-wrapper {
+  max-width: 100%;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .insights-section {
+    grid-template-columns: 1fr;
+  }
+}
   
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,800;1,400&family=DM+Sans:wght@300;400;500&display=swap');
 
@@ -48,7 +239,19 @@ nav{position:fixed;top:0;width:100%;z-index:100;display:flex;justify-content:spa
 
 /* STORY */
 .story{display:grid;grid-template-columns:1fr 1fr;min-height:60vh;overflow:hidden;}
-.story-img{background:#2c1f10;min-height:480px;display:flex;align-items:center;justify-content:center;}
+.story {
+  align-items: center; /* keeps both sides vertically balanced */
+}
+.story-img {
+  overflow: hidden;
+}
+
+.story-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* keeps image nicely cropped */
+  border-radius: 8px;
+}
 .story-content{padding:5rem;background:var(--cream);display:flex;flex-direction:column;justify-content:center;}
 .section-label{font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);font-weight:500;margin-bottom:1.2rem;}
 .story-content h2{font-family:'Playfair Display',Georgia,serif;font-size:clamp(1.8rem,3vw,2.5rem);font-weight:700;line-height:1.2;margin-bottom:1.5rem;}
@@ -88,13 +291,17 @@ nav{position:fixed;top:0;width:100%;z-index:100;display:flex;justify-content:spa
 .itag:hover{background:var(--gold);color:var(--ink);border-color:var(--gold);}
 
 /* TESTIMONIAL */
+blockquote {
+  font-style: italic;
+  line-height: 1.6;
+}
 .testimonial-section{padding:6rem 5%;background:var(--soft-bg);text-align:center;}
 .testimonial-header{margin-bottom:3rem;}
 .testimonial-header h2{font-family:'Playfair Display',Georgia,serif;font-size:clamp(1.8rem,3vw,2.5rem);font-weight:700;color:var(--ink);}
 .carousel-wrapper{position:relative;max-width:780px;margin:0 auto;overflow:hidden;}
 .carousel-track{display:flex;transition:transform 0.6s cubic-bezier(0.4,0,0.2,1);}
 .carousel-slide{min-width:100%;padding:0 3rem;}
-.carousel-slide blockquote{position:relative;padding:2.5rem 2.5rem 2.5rem 3.5rem;border-left:3px solid var(--gold);background:var(--cream);text-align:left;}
+.carousel-slide blockquote{position:relative;padding:2.5rem 2.5rem 2.5rem 3.5rem;border-left:none solid var(--gold);background:var(--cream);text-align:left;}
 .carousel-slide .qmark{font-family:'Playfair Display',Georgia,serif;font-size:6rem;color:var(--gold-light);position:absolute;top:-1.5rem;left:1rem;line-height:1;}
 .carousel-slide blockquote p{font-family:'Playfair Display',Georgia,serif;font-style:italic;font-size:1.08rem;line-height:1.85;color:var(--ink);}
 .carousel-slide blockquote footer{margin-top:1.2rem;font-size:0.82rem;color:var(--gold);letter-spacing:0.08em;text-transform:uppercase;font-weight:600;font-style:normal;}
@@ -274,7 +481,7 @@ footer .nav-logo img{height:60px;}
 <!-- HERO -->
 <section class="hero">
   <div class="hero-text">
-    <span class="hero-eyebrow">Design Studio &middot; Est. 2024</span>
+    <span class="hero-eyebrow">Design Studio &middot; Est. 2010</span>
     <h1>Crafting <em>Meaningful</em><br>Brand Identities</h1>
     <p class="hero-desc">Empowering businesses through thoughtful design and strategic visual communication.</p>
     <div class="hero-btns">
@@ -293,39 +500,14 @@ footer .nav-logo img{height:60px;}
 
 <!-- STORY -->
 <section class="story" id="story">
-  <div class="story-img">
-    <svg width="100%" height="100%" viewBox="0 0 500 480" xmlns="http://www.w3.org/2000/svg">
-      <rect width="500" height="480" fill="#2c1f10"/>
-      <rect x="60" y="300" width="380" height="12" rx="4" fill="#5C3D18"/>
-      <rect x="80" y="312" width="12" height="100" fill="#4A3218"/>
-      <rect x="408" y="312" width="12" height="100" fill="#4A3218"/>
-      <rect x="150" y="180" width="200" height="125" rx="6" fill="#1A0F05"/>
-      <rect x="158" y="188" width="184" height="109" rx="3" fill="#0D1117"/>
-      <rect x="230" y="305" width="40" height="18" fill="#3D2B10"/>
-      <rect x="210" y="322" width="80" height="6" rx="3" fill="#5C3D18"/>
-      <rect x="170" y="200" width="80" height="8" rx="2" fill="#C4973A" opacity="0.7"/>
-      <rect x="170" y="216" width="120" height="4" rx="2" fill="#E8C97A" opacity="0.3"/>
-      <rect x="170" y="228" width="100" height="4" rx="2" fill="#E8C97A" opacity="0.2"/>
-      <rect x="170" y="240" width="110" height="4" rx="2" fill="#E8C97A" opacity="0.2"/>
-      <rect x="260" y="200" width="70" height="60" rx="4" fill="#C4973A" opacity="0.15"/>
-      <rect x="185" y="326" width="130" height="16" rx="3" fill="#3D2B10"/>
-      <rect x="370" y="272" width="28" height="30" rx="4" fill="#E8C97A"/>
-      <path d="M398 282 Q410 282 410 294 Q410 306 398 306" stroke="#C4973A" stroke-width="3" fill="none"/>
-      <rect x="375" y="268" width="18" height="6" rx="2" fill="#C4973A" opacity="0.5"/>
-      <rect x="110" y="274" width="22" height="26" rx="3" fill="#5C3D18"/>
-      <line x1="118" y1="274" x2="113" y2="255" stroke="#E8C97A" stroke-width="3"/>
-      <line x1="122" y1="274" x2="122" y2="252" stroke="#C4973A" stroke-width="3"/>
-      <line x1="126" y1="274" x2="130" y2="256" stroke="#E8C97A" stroke-width="2.5"/>
-      <circle cx="80" cy="100" r="3" fill="#C4973A" opacity="0.3"/>
-      <circle cx="420" cy="80" r="5" fill="#E8C97A" opacity="0.2"/>
-      <circle cx="440" cy="160" r="3" fill="#C4973A" opacity="0.25"/>
-      <text x="250" y="430" text-anchor="middle" font-family="Georgia,serif" font-size="13" fill="#C4973A" opacity="0.5" letter-spacing="4">KARPANAI STUDIOS</text>
-    </svg>
-  </div>
+ <div class="story-img">
+  <img src="our-story.jpg" alt="Our Story">
+  <div class="story-overlay"></div>
+</div>
   <div class="story-content">
     <p class="section-label">Who We Are</p>
     <h2>Our Story</h2>
-    <p>Welcome to Karpanai Studios, where imagination takes flight! Our journey began with a simple vision: to transform ideas into meaningful designs that seamlessly connect people with technology. What started as a creative design initiative has blossomed into a full-fledged UX and product design studio, dedicated to bringing your concepts to life. Join us as we navigate the intersection of creativity and innovation!</p>
+    <p>Welcome to Karpanai Studios, where imagination takes flight!<br><p> Our journey began with a simple vision: to transform ideas into meaningful designs that seamlessly connect people with technology.<br> <p>What started as a creative design initiative has blossomed into a full-fledged UX and product design studio, dedicated to bringing your concepts to life. <br><p>Join us as we navigate the intersection of creativity and innovation!</p></p></p></p>
   </div>
 </section>
 
@@ -349,67 +531,90 @@ footer .nav-logo img{height:60px;}
 <!-- PROMISE -->
 <section class="promise">
   <p class="section-label" style="color:var(--gold-light)">Our Commitment</p>
-  <h2>We partner with businesses to elevate their vision with <em>smart design.</em></h2>
+  <h2>We partner with businesses to elevate their vision with <em><p>smart design.</em></h2></p>
   <p class="sub">Every project is a new story &mdash; and we're here to make it unforgettable.</p>
   <a href="#contact" class="btn-primary" style="background:var(--gold);color:var(--ink)" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'});return false;">Start Your Story</a>
   <div class="promise-banner">
-    <div class="promise-stat"><span class="num">50+</span><span class="lbl">Projects Delivered</span></div>
+    <div class="promise-stat"><span class="num">100+</span><span class="lbl">Projects Delivered</span></div>
     <div class="pdivider"></div>
-    <div class="promise-stat"><span class="num">7</span><span class="lbl">Industries Served</span></div>
+    <div class="promise-stat"><span class="num">12</span><span class="lbl">Industries Served</span></div>
     <div class="pdivider"></div>
     <div class="promise-stat"><span class="num">100%</span><span class="lbl">Client Satisfaction</span></div>
   </div>
 </section>
 
 <!-- INDUSTRIES -->
-<section class="industries">
-  <p class="section-label">Sectors</p>
-  <h2>Industries We Serve</h2>
-  <div class="industry-tags">
-    <span class="itag">Technology</span><span class="itag">Healthcare</span><span class="itag">E-Commerce</span>
-    <span class="itag">Education</span><span class="itag">Finance</span><span class="itag">Real Estate</span>
-    <span class="itag">Artificial Intelligence</span>
-  </div>
-</section>
+<section class="insights-section">
 
-<!-- TESTIMONIALS -->
-<section class="testimonial-section">
-  <div class="testimonial-header">
+  <!-- LEFT: INDUSTRIES -->
+  <div class="insights-left">
+    <p class="section-label">Sectors</p>
+    <h2>Industries We Serve</h2>
+
+ <div class="industry-tags">
+
+  <span class="itag"><i class="fas fa-laptop-code"></i> Technology</span>
+
+  <span class="itag"><i class="fas fa-heartbeat"></i> Healthcare</span>
+
+  <span class="itag"><i class="fas fa-cart-shopping"></i> E-Commerce</span>
+
+  <span class="itag"><i class="fas fa-graduation-cap"></i> Education</span>
+
+  <span class="itag"><i class="fas fa-chart-line"></i> Finance</span>
+
+  <span class="itag"><i class="fas fa-building"></i> Real Estate</span>
+
+  <span class="itag"><i class="fas fa-brain"></i> Artificial Intelligence</span>
+
+</div>
+  </div>
+
+  <!-- RIGHT: TESTIMONIAL -->
+  <div class="insights-right">
     <p class="section-label">Client Testimonials</p>
     <h2>What Our Clients Say</h2>
-  </div>
-  <div class="carousel-wrapper">
-    <div class="carousel-track" id="carouselTrack">
-      <div class="carousel-slide">
-        <blockquote>
-          <div class="qmark">&ldquo;</div>
-          <p>I had an incredible experience working with Karpanai Studios. Their creativity, attention to detail, and ability to translate my ideas into visually stunning designs truly exceeded my expectations. From start to finish, they were professional, responsive, and delivered high-quality work on time. I highly recommend Karpanai Studios to anyone looking for a talented and reliable graphic designer.</p>
-          <footer>&mdash; Eswari Edu Ventures Private Limited</footer>
-        </blockquote>
+
+    <div class="carousel-wrapper">
+      <div class="carousel-track" id="carouselTrack">
+        
+        <div class="carousel-slide">
+          <blockquote>
+            <div class="qmark">&ldquo;</div>
+            <p>I had an incredible experience working with Karpanai Studios. Their creativity, attention to detail, and ability to translate my ideas into visually stunning designs truly exceeded my expectations. From start to finish, they were professional, responsive, and delivered high-quality work on time. I highly recommend Karpanai Studios to anyone looking for a talented and reliable graphic designer.</p>
+            <footer>&mdash; Eswari Edu Ventures</footer>
+          </blockquote>
+        </div>
+
+        <div class="carousel-slide">
+          <blockquote>
+            <div class="qmark">&ldquo;</div>
+            <p>Our product UX went from confusing to seamless. Thanks to the team forhelping us improve the experience and increase retention!</p>
+            <footer>&mdash; Narmtech</footer>
+          </blockquote>
+        </div>
+
+        <div class="carousel-slide">
+          <blockquote>
+            <div class="qmark">&ldquo;</div>
+            <p>“Karpanai Studios' strategic insights and consulting services have helped us elevate our customer experience, resulting in tangible improvements in customer satisfaction and loyalty.”</p>
+            <footer>&mdash; Tie-Up Events</footer>
+          </blockquote>
+        </div>
+
       </div>
-      <div class="carousel-slide">
-        <blockquote>
-          <div class="qmark">&ldquo;</div>
-          <p>Our product UX went from confusing to seamless. Thanks to the team for helping us improve the experience and increase retention!</p>
-          <footer>&mdash; Narmtech</footer>
-        </blockquote>
+
+      <div class="carousel-dots" id="carouselDots">
+        <span class="dot active" onclick="goToSlide(0)"></span>
+        <span class="dot" onclick="goToSlide(1)"></span>
+        <span class="dot" onclick="goToSlide(2)"></span>
       </div>
-      <div class="carousel-slide">
-        <blockquote>
-          <div class="qmark">&ldquo;</div>
-          <p>Karpanai Studios&#39; strategic insights and consulting services have helped us elevate our customer experience, resulting in tangible improvements in customer satisfaction and loyalty.</p>
-          <footer>&mdash; Tie-Up Events</footer>
-        </blockquote>
-      </div>
+
+      <button class="carousel-btn prev" onclick="changeSlide(-1)">&#8249;</button>
+      <button class="carousel-btn next" onclick="changeSlide(1)">&#8250;</button>
     </div>
-    <div class="carousel-dots" id="carouselDots">
-      <span class="dot active" onclick="goToSlide(0)"></span>
-      <span class="dot" onclick="goToSlide(1)"></span>
-      <span class="dot" onclick="goToSlide(2)"></span>
-    </div>
-    <button class="carousel-btn prev" onclick="changeSlide(-1)">&#8249;</button>
-    <button class="carousel-btn next" onclick="changeSlide(1)">&#8250;</button>
   </div>
+
 </section>
 
 <!-- CONTACT -->
@@ -423,8 +628,12 @@ footer .nav-logo img{height:60px;}
   </div>
   <div class="contact-form">
     <form action="https://formsubmit.co/karpanaistudios@gmail.com" method="POST" target="hidden_iframe" onsubmit="showSuccessPopup()">
-      <input type="hidden" name="_captcha" value="false">
-      <input type="hidden" name="_subject" value="New Enquiry from Karpanai Studios Website">
+      <input type="hidden" name="_template" value="box">
+      <input type="text" name="_honey" style="display:none">
+      <input type="hidden" name="_template" value="table">
+      
+<input type="hidden" name="_subject" value="New Enquiry from Karpanai Studios Website">
+<input type="hidden" name="_template" value="table">
       <div class="form-row">
         <div class="form-group"><label>First Name *</label><input type="text" name="first_name" placeholder="Your first name" required></div>
         <div class="form-group"><label>Last Name *</label><input type="text" name="last_name" placeholder="Your last name" required></div>
@@ -447,7 +656,7 @@ footer .nav-logo img{height:60px;}
     </div>
     <h2 style="margin-bottom:0.8rem;color:#1A1612;font-family:'Playfair Display',Georgia,serif;font-size:1.6rem;font-weight:700;">Message Sent!</h2>
     <p style="margin-bottom:0.5rem;color:#6B4C2A;line-height:1.7;font-size:0.98rem;">Thank you for reaching out to <strong>Karpanai Studios</strong>.</p>
-    <p style="margin-bottom:2rem;color:#8A7A68;line-height:1.7;font-size:0.95rem;">We'll review your message and get back to you within 24 hours.</p>
+    <p style="margin-bottom:2rem;color:#8A7A68;line-height:1.7;font-size:0.95rem;">We'll review your message and get back to you <br> within 24 hours.</p>
     <button onclick="closePopup()" style="background:#1A1612;color:#F5F0E8;border:none;padding:0.8rem 2.5rem;cursor:pointer;font-weight:600;font-size:0.88rem;letter-spacing:0.08em;text-transform:uppercase;transition:background 0.2s;" onmouseover="this.style.background='#C4973A';this.style.color='#1A1612';" onmouseout="this.style.background='#1A1612';this.style.color='#F5F0E8';">Close</button>
   </div>
 </div>
