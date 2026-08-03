@@ -1,957 +1,549 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <meta charset="UTF-8">
-<link rel="icon" type="image/x-icon" href="favicon.ico">
-<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
-<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
-<link rel="apple-touch-icon" sizes="180x180" href="favicon-180.png">
-<meta name="msapplication-TileImage" content="favicon-32.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Karpanai Studios</title>
+<title>Karpanai Studios — Design Studio, Est. 2010</title>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-/* FORCE CENTER ALIGN */
-.carousel-slide blockquote,
-.carousel-slide blockquote p,
-.carousel-slide blockquote footer {
-  text-align: center !important;
-}
-
-/* Center the whole block */
-.carousel-slide blockquote {
-  margin: 0 auto;
-  max-width: 600px;
-}
-
-/* Center quote icon */
-.qmark {
-  display: block;
-  text-align: center !important;
-  margin: 0 auto 10px;
-}
-
-/* Fix the black name box alignment */
-.carousel-slide footer {
-  display: block;
-  text-align: center !important;
-}
-  .carousel-slide {
-  display: flex;
-  justify-content: center;
-}
-
-.carousel-slide blockquote {
-  text-align: center;
-  max-width: 600px; /* keeps text readable */
-  margin: 0 auto;
-}
-
-/* Center quote icon */
-.qmark {
-  display: block;
-  text-align: center;
-  font-size: 2rem;
-  margin-bottom: 10px;
-}
-
-/* Center footer */
-.carousel-slide footer {
-  margin-top: 10px;
-  text-align: center;
-}
-.insights-section {
-  position: relative; /* required for divider */
-}
-@media (max-width: 900px) {
-  .insights-right {
-    border-left: none;
-    padding-left: 0;
+  :root{
+    --ink:#15130f;
+    --ink-soft:#2a251d;
+    --cream:#f6f1e8;
+    --paper:#fffcf6;
+    --text:#211d17;
+    --text-soft:#726a5c;
+    --text-on-ink:#f3ece0;
+    --text-on-ink-soft:#a89c8a;
+    --rust:#a8532b;
+    --rust-deep:#8a4322;
+    --olive:#6f7a52;
+    --line:#e4d9c6;
+    --line-ink:#3a352b;
+    --radius:2px;
   }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--cream);color:var(--text);font-family:'Manrope',sans-serif;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+  img{max-width:100%;display:block;}
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 32px;}
+  em{font-family:'Fraunces',serif;font-style:italic;font-weight:400;color:inherit;}
+  .eyebrow{display:flex;align-items:center;gap:12px;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--rust);font-weight:700;margin-bottom:18px;}
+  .eyebrow::before{content:"";width:26px;height:1px;background:var(--rust);display:block;}
+  .eyebrow.on-ink{color:#d9a17f;}
+  .eyebrow.on-ink::before{background:#d9a17f;}
+  h1,h2,h3{font-family:'Fraunces',serif;font-weight:500;letter-spacing:-.01em;}
+  section{padding:110px 0;}
+  @media(max-width:720px){section{padding:72px 0;} .wrap{padding:0 22px;}}
 
-  .insights-left {
-    padding-right: 0;
-  }
-}
-/* Vertical Divider */
-.insights-right {
-  border-left: 2px solid rgba(196, 151, 58, 0.4);
-  padding-left: 3rem; /* spacing from divider */
-}
+  header.site{position:sticky;top:0;z-index:50;background:rgba(21,19,15,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line-ink);}
+  header.site .wrap{display:flex;align-items:center;justify-content:space-between;height:132px;}
+  .logo{display:flex;align-items:center;}
+  .logo img{height:100px;width:auto;display:block;}
+  nav.links{display:flex;gap:36px;font-size:14px;font-weight:600;}
+  nav.links a{color:var(--text-on-ink-soft);transition:color .2s;}
+  nav.links a:hover{color:var(--text-on-ink);}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:13px 26px;border-radius:var(--radius);font-size:13.5px;font-weight:700;letter-spacing:.03em;border:1px solid var(--rust);transition:transform .18s ease, background .18s ease, color .18s ease;}
+  .btn.solid{background:var(--rust);color:#fff;}
+  .btn.solid:hover{background:var(--rust-deep);transform:translateY(-2px);}
+  .btn.ghost-ink{border-color:#4a4335;color:var(--text-on-ink);}
+  .btn.ghost-ink:hover{border-color:var(--rust);color:#fff;transform:translateY(-2px);}
+  .btn.ghost-light{border-color:var(--line);color:var(--text);}
+  .btn.ghost-light:hover{border-color:var(--rust);color:var(--rust);}
+  header.site .btn{padding:10px 20px;font-size:13px;}
 
-.insights-left {
-  padding-right: 3rem; /* balance spacing */
-}
-  .story-img {
-  position: relative;
-  overflow: hidden;
-  border-radius: 8px;
-}
+  .hero{background:var(--ink);color:var(--text-on-ink);position:relative;overflow:hidden;min-height:94vh;display:flex;flex-direction:column;justify-content:center;padding:140px 0 0;}
+  .hero-blob{position:absolute;border-radius:50%;filter:blur(70px);pointer-events:none;}
+  .hero-blob.b1{width:560px;height:560px;background:radial-gradient(circle,#4a463c,transparent 70%);top:-140px;left:-120px;opacity:.55;animation:float1 20s ease-in-out infinite;}
+  .hero-blob.b2{width:620px;height:620px;background:radial-gradient(circle,#3a3630,transparent 70%);bottom:-220px;right:-160px;opacity:.5;animation:float2 24s ease-in-out infinite;}
+  .hero-blob.b3{width:420px;height:420px;background:radial-gradient(circle,#524c3f,transparent 70%);bottom:10%;left:8%;opacity:.35;animation:float1 26s ease-in-out infinite reverse;}
+  @keyframes float1{0%,100%{transform:translate(0,0);}50%{transform:translate(60px,40px);}}
+  @keyframes float2{0%,100%{transform:translate(0,0);}50%{transform:translate(-50px,-30px);}}
+  .hero-content{position:relative;z-index:2;max-width:820px;margin:0 auto;padding:0 32px;text-align:center;}
+  .hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.06);border:1px solid var(--line-ink);padding:9px 18px;border-radius:30px;font-size:13px;color:var(--text-on-ink-soft);margin-bottom:32px;}
+  .hero-badge .dot{width:6px;height:6px;border-radius:50%;background:var(--rust);display:inline-block;}
+  .hero h1{font-size:clamp(38px,6.5vw,72px);line-height:1.08;font-weight:400;}
+  .hero p.lede{max-width:520px;margin:26px auto 0;font-size:16px;color:var(--text-on-ink-soft);}
+  .hero .cta-row{display:flex;gap:16px;margin-top:40px;flex-wrap:wrap;justify-content:center;}
+  .hero-scroll{position:relative;z-index:2;display:flex;align-items:center;justify-content:space-between;max-width:1180px;margin:90px auto 0;padding:0 32px 40px;font-size:12.5px;color:var(--text-on-ink-soft);letter-spacing:.03em;}
+  .hero-scroll .mouse{width:22px;height:34px;border:1px solid var(--line-ink);border-radius:12px;display:flex;justify-content:center;padding-top:6px;}
+  .hero-scroll .mouse .wheel{width:3px;height:7px;background:var(--text-on-ink-soft);border-radius:2px;animation:wheel 1.6s ease-in-out infinite;}
+  @keyframes wheel{0%{opacity:1;transform:translateY(0);}100%{opacity:0;transform:translateY(8px);}}
+  @media(max-width:720px){.hero{min-height:auto;padding:120px 0 0;} .hero-scroll{margin-top:60px;}}
+  @media (prefers-reduced-motion: reduce){.hero-blob{animation:none;} .hero-scroll .mouse .wheel{animation:none;}}
 
-/* Image */
-.story-img img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.6s ease; /* smooth zoom */
-}
+  .about .wrap{display:grid;grid-template-columns:.85fr 1.15fr;gap:80px;align-items:center;}
+  @media(max-width:860px){.about .wrap{grid-template-columns:1fr;gap:44px;}}
+  .about-img{position:relative;overflow:hidden;border-radius:var(--radius);}
+  .about-img img{border-radius:var(--radius);filter:grayscale(100%);transition:filter .6s ease, transform .6s ease;}
+  .about-img:hover img{filter:grayscale(0%);transform:scale(1.03);}
+  .about-img .frame{position:absolute;inset:18px -18px -18px 18px;border:1px solid var(--rust);z-index:-1;}
+  .about h2{font-size:clamp(28px,3.4vw,42px);margin-bottom:22px;line-height:1.2;}
+  .about p{color:var(--text-soft);font-size:16px;max-width:520px;margin-bottom:14px;}
 
-/* Hover zoom */
-.story-img:hover img {
-  transform: scale(1.08);
-}
+  /* PROCESS */
+  .process{background:var(--cream);}
+  .process h2{font-size:clamp(28px,3.4vw,42px);}
+  .process > .wrap > p{color:var(--text-soft);max-width:520px;margin-top:16px;}
+  .process-steps{margin-top:60px;display:grid;grid-template-columns:repeat(3,1fr);gap:44px;}
+  @media(max-width:860px){.process-steps{grid-template-columns:1fr;gap:40px;}}
+  .process-step{border-top:1px solid var(--line);padding-top:22px;}
+  .process-step .n{font-family:'Fraunces',serif;font-style:italic;font-size:34px;color:var(--rust);}
+  .process-step h3{font-size:19px;font-weight:600;margin:14px 0 10px;}
+  .process-step p{font-size:14.5px;color:var(--text-soft);}
 
-/* Gradient overlay */
-.story-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to top,
-    rgba(0,0,0,0.6),
-    rgba(0,0,0,0.2),
-    rgba(0,0,0,0)
-  );
-  pointer-events: none;
-}
-body {
-  font-family: sans-serif;
-}
+  /* TAG MARQUEE — matches Our Expertise background */
+  .tagband{background:var(--paper);padding:56px 0 64px;overflow:hidden;border-bottom:1px solid var(--line);}
+  .marquee-row{display:flex;gap:14px;width:max-content;}
+  .marquee-row.r1{animation:scrollLeft 32s linear infinite;}
+  .marquee-row.r2{animation:scrollRight 36s linear infinite;margin-top:14px;}
+  .pill{display:flex;align-items:center;gap:10px;background:var(--cream);border:1px solid var(--line);color:var(--text);padding:14px 24px;border-radius:40px;font-size:14px;font-weight:600;white-space:nowrap;}
+  .pill .ic{color:var(--rust);font-size:15px;}
+  @keyframes scrollLeft{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+  @keyframes scrollRight{from{transform:translateX(-50%);}to{transform:translateX(0);}}
+  @media (prefers-reduced-motion: reduce){.marquee-row{animation:none;}}
 
-/* CENTER ALIGN RIGHT SIDE */
-.insights-right {
-  text-align: center;
-}
+  .services{background:var(--paper);border-top:1px solid var(--line);}
+  .services h2{font-size:clamp(28px,3.4vw,42px);max-width:640px;line-height:1.2;}
+  .services > .wrap > p{color:var(--text-soft);max-width:520px;margin-top:16px;}
+  .grid-services{margin-top:60px;display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);}
+  @media(max-width:860px){.grid-services{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:560px){.grid-services{grid-template-columns:1fr;}}
+  .svc-card{background:var(--paper);padding:38px 30px;transition:background .2s;}
+  .svc-card:hover{background:var(--cream);}
+  .svc-card .ico{font-size:26px;margin-bottom:20px;}
+  .svc-card h3{font-size:19px;font-weight:600;margin-bottom:10px;}
+  .svc-card p{font-size:14.5px;color:var(--text-soft);}
 
-/* Center heading */
-.insights-right h2 {
-  text-align: center;
-}
+  .commit{background:var(--ink);color:var(--text-on-ink);text-align:center;}
+  .commit .wrap{max-width:760px;}
+  .commit h2{font-size:clamp(26px,4vw,44px);line-height:1.3;font-weight:400;}
+  .commit p.sub{margin-top:18px;color:var(--text-on-ink-soft);font-size:16px;}
+  .commit .btn{margin-top:34px;}
+  .stats{margin-top:80px;display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line-ink);padding-top:40px;}
+  .stats .num{font-family:'Fraunces',serif;font-size:44px;color:var(--rust);}
+  .stats .lbl{font-size:13px;color:var(--text-on-ink-soft);margin-top:6px;}
 
-/* Center label */
-.insights-right .section-label {
-  display: block;
-  margin-bottom: 0.5rem;
-  text-align: center;
-}
+  .sectors .eyebrow{justify-content:center;}
+  .sectors{text-align:center;}
+  .sectors h2{font-size:clamp(26px,3.4vw,38px);}
+  .sector-pills{margin-top:40px;display:flex;flex-wrap:wrap;gap:12px;justify-content:center;}
+  .sector-pills span{font-size:13.5px;font-weight:700;letter-spacing:.02em;padding:10px 20px;border:1px solid var(--line);border-radius:20px;color:var(--text-soft);display:inline-block;cursor:default;transition:background .22s ease,color .22s ease,border-color .22s ease,transform .22s ease;}
+  .sector-pills span:hover{background:var(--rust);color:#fff;border-color:var(--rust);transform:translateY(-4px);}
 
-/* Center testimonial content */
-.carousel-wrapper {
-  margin: 0 auto;
-}
-.itag {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 8px 14px;
-  border: 1px solid #d6b36a;
-  border-radius: 20px;
-  font-size: 0.85rem;
-}
+  .testi{background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .testi-track-wrap{margin-top:56px;position:relative;}
+  .testi-track{display:flex;overflow-x:auto;gap:24px;scroll-snap-type:x mandatory;padding-bottom:8px;scrollbar-width:none;}
+  .testi-track::-webkit-scrollbar{display:none;}
+  .testi-card{scroll-snap-align:start;flex:0 0 min(420px,86vw);background:var(--cream);border:1px solid var(--line);border-radius:var(--radius);padding:34px 30px;display:flex;flex-direction:column;justify-content:space-between;}
+  .testi-card .quote-mark{font-family:'Fraunces',serif;font-style:italic;font-size:44px;color:var(--rust);line-height:1;}
+  .testi-card p.q{margin-top:14px;font-size:15px;color:var(--text);}
+  .testi-card .who{margin-top:24px;border-top:1px solid var(--line);padding-top:16px;display:flex;align-items:center;justify-content:space-between;}
+  .testi-card .who .id{display:flex;align-items:center;gap:12px;}
+  .testi-card .who .avatar{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--rust),var(--olive));display:flex;align-items:center;justify-content:center;color:#fff;font-family:'Fraunces',serif;font-size:14px;flex-shrink:0;}
+  .testi-card .who .name{font-weight:700;font-size:14px;}
+  .testi-card .stars{color:var(--rust);font-size:13px;letter-spacing:1px;}
+  .testi-nav{display:flex;gap:10px;margin-top:26px;}
+  .testi-nav button{width:38px;height:38px;border-radius:50%;border:1px solid var(--line);background:var(--paper);cursor:pointer;font-size:15px;color:var(--text);transition:border-color .2s,color .2s;}
+  .testi-nav button:hover{border-color:var(--rust);color:var(--rust);}
 
-.itag i {
-  font-size: 0.8rem;
-}
-.insights-left {
-  text-align: center;
-}
+  .work h2{font-size:clamp(28px,3.4vw,42px);}
+  .work-head p{color:var(--text-soft);max-width:440px;}
+  .work-grid{margin-top:56px;display:grid;grid-template-columns:repeat(3,1fr);gap:28px;}
+  @media(max-width:900px){.work-grid{grid-template-columns:1fr;}}
+  .work-card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;transition:transform .25s ease, box-shadow .25s ease;}
+  .work-card:hover{transform:translateY(-6px);box-shadow:0 18px 34px -18px rgba(21,19,15,.35);}
+  .work-thumb{aspect-ratio:4/3;background:linear-gradient(135deg,#e9ddc6,#d8c9a8);display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-style:italic;font-size:15px;color:#8c7a54;text-align:center;padding:16px;}
+  .work-body{padding:22px 22px 26px;}
+  .work-body .idx{font-size:12px;color:var(--rust);font-weight:700;letter-spacing:.06em;}
+  .work-body h3{font-size:18px;font-weight:600;margin:8px 0 6px;}
+  .work-body p{font-size:13.5px;color:var(--text-soft);}
 
-.insights-left .section-label {
-  display: block;
-  margin-bottom: 0.5rem;
-}
+  .social-handles{margin-top:44px;}
+  .social-handles h3{font-size:15px;font-weight:700;margin-bottom:18px;color:var(--text-soft);text-transform:uppercase;letter-spacing:.05em;font-family:'Manrope';}
+  .handle-row{display:flex;flex-wrap:wrap;gap:12px;}
+  .handle-row a{font-size:13.5px;font-weight:700;padding:10px 18px;border:1px solid var(--line);border-radius:20px;color:var(--text-soft);transition:border-color .2s,color .2s;}
+  .handle-row a:hover{border-color:var(--rust);color:var(--rust);}
 
-.industry-tags {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0.6rem;
-}
+  /* FAQ — standalone */
+  .faq .wrap{max-width:800px;}
+  .faq-item{border-bottom:1px solid var(--line);}
+  .faq-item button{width:100%;text-align:left;background:none;border:none;cursor:pointer;padding:22px 0;display:flex;justify-content:space-between;align-items:center;font-family:'Manrope';font-size:16px;font-weight:700;color:var(--text);}
+  .faq-item .plus{font-size:20px;color:var(--rust);transition:transform .25s;font-weight:400;}
+  .faq-item.open .plus{transform:rotate(45deg);}
+  .faq-item .a{max-height:0;overflow:hidden;transition:max-height .3s ease;}
+  .faq-item.open .a{max-height:200px;}
+  .faq-item .a p{padding-bottom:22px;color:var(--text-soft);font-size:14.5px;max-width:620px;}
 
- 
-.insights-section {
-  display: grid;
-  grid-template-columns: 1fr 1.2fr;
-  gap: 4rem;
-  padding: 5rem 5%;
-  background: var(--soft-bg);
-  align-items: start;
-}
+  .contact{background:var(--ink);color:var(--text-on-ink);}
+  .contact .wrap{display:grid;grid-template-columns:1fr 1fr;gap:70px;}
+  @media(max-width:860px){.contact .wrap{grid-template-columns:1fr;gap:44px;}}
+  .contact h2{font-size:clamp(30px,4vw,48px);font-weight:400;line-height:1.2;}
+  .contact p.sub{margin-top:16px;color:var(--text-on-ink-soft);max-width:400px;}
+  .contact-links{margin-top:34px;display:flex;flex-direction:column;gap:12px;font-size:15px;}
+  .contact-links a{color:var(--text-on-ink-soft);}
+  .contact-links a:hover{color:var(--rust);}
+  form.cform{display:flex;flex-direction:column;gap:16px;}
+  form.cform .row2{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  form.cform label{font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--text-on-ink-soft);margin-bottom:6px;display:block;}
+  form.cform input,form.cform textarea{width:100%;background:transparent;border:1px solid var(--line-ink);border-radius:var(--radius);padding:13px 14px;color:var(--text-on-ink);font-family:'Manrope';font-size:14.5px;}
+  form.cform input:focus,form.cform textarea:focus{outline:none;border-color:var(--rust);}
+  form.cform button{margin-top:6px;align-self:flex-start;}
 
-/* LEFT */
-.insights-left h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: 2rem;
-  margin-bottom: 1.5rem;
-}
+  footer{background:var(--ink);color:var(--text-on-ink-soft);border-top:1px solid var(--line-ink);}
+  footer .wrap{padding:32px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;font-size:13px;}
+  footer .flinks{display:flex;gap:22px;}
+  footer .flinks a:hover{color:var(--text-on-ink);}
 
-/* RIGHT */
-.insights-right h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: 2rem;
-  margin-bottom: 2rem;
-}
+  .whatsapp-fab{position:fixed;bottom:26px;right:26px;width:56px;height:56px;border-radius:50%;background:var(--olive);display:flex;align-items:center;justify-content:center;box-shadow:0 10px 24px -8px rgba(0,0,0,.4);z-index:60;transition:transform .2s;}
+  .whatsapp-fab:hover{transform:scale(1.08);}
+  .whatsapp-fab svg{width:26px;height:26px;fill:#fff;}
 
-/* Make testimonial align nicely */
-.insights-right .carousel-wrapper {
-  max-width: 100%;
-}
-
-/* Responsive */
-@media (max-width: 900px) {
-  .insights-section {
-    grid-template-columns: 1fr;
-  }
-}
-  
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,800;1,400&family=DM+Sans:wght@300;400;500&display=swap');
-
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-:root{
-  --cream:#F5F0E8;--ink:#1A1612;--gold:#C4973A;
-  --gold-light:#E8C97A;--warm-brown:#6B4C2A;--muted:#8A7A68;--soft-bg:#FDFAF5;
-}
-html{scroll-behavior:smooth;}
-body{font-family:'DM Sans',Georgia,sans-serif;background:var(--soft-bg);color:var(--ink);overflow-x:hidden;}
-
-/* NAV */
-nav{position:fixed;top:0;width:100%;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:0.6rem 5%;background:rgba(253,250,245,0.96);backdrop-filter:blur(10px);border-bottom:1px solid rgba(196,151,58,0.15);}
-.nav-logo{display:flex;align-items:center;text-decoration:none;}
-.nav-logo img{height:100px;width:auto;display:block;}
-.nav-links{display:flex;gap:2rem;list-style:none;}
-.nav-links a{text-decoration:none;color:var(--muted);font-size:0.88rem;font-weight:500;letter-spacing:0.05em;text-transform:uppercase;transition:color 0.2s;}
-.nav-links a:hover{color:var(--gold);}
-.nav-cta{background:var(--ink)!important;color:var(--cream)!important;padding:0.5rem 1.2rem;border-radius:2px;}
-.nav-cta:hover{background:var(--gold)!important;color:var(--ink)!important;}
-
-/* HERO */
-.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:7rem 5% 4rem;position:relative;overflow:hidden;}
-.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 80% 50%,rgba(196,151,58,0.07) 0%,transparent 65%);pointer-events:none;}
-.hero-text{padding-right:4rem;}
-.hero-eyebrow{display:inline-block;font-size:0.78rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);font-weight:500;margin-bottom:1.2rem;padding-left:2rem;position:relative;}
-.hero-eyebrow::before{content:'';position:absolute;left:0;top:50%;width:1.4rem;height:1px;background:var(--gold);}
-.hero h1{font-family:'Playfair Display',Georgia,serif;font-size:clamp(2.4rem,5vw,4rem);line-height:1.12;font-weight:800;letter-spacing:-0.02em;margin-bottom:1.4rem;}
-.hero h1 em{font-style:italic;color:var(--gold);}
-.hero-desc{font-size:1.05rem;line-height:1.75;color:var(--muted);max-width:440px;margin-bottom:2.4rem;}
-.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;}
-.btn-primary{background:var(--ink);color:var(--cream);padding:0.85rem 2rem;font-size:0.9rem;font-weight:500;text-decoration:none;border-radius:2px;letter-spacing:0.04em;transition:background 0.25s,transform 0.2s;display:inline-block;cursor:pointer;border:none;}
-.btn-primary:hover{background:var(--gold);color:var(--ink);transform:translateY(-2px);}
-.btn-secondary{border:1.5px solid var(--ink);color:var(--ink);padding:0.85rem 2rem;font-size:0.9rem;font-weight:500;text-decoration:none;border-radius:2px;letter-spacing:0.04em;transition:border-color 0.25s,color 0.25s,transform 0.2s;display:inline-block;}
-.btn-secondary:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-2px);}
-.hero-visual{display:flex;justify-content:center;align-items:center;position:relative;}
-.owl-ring{width:320px;height:320px;border-radius:50%;background:#0a0a0a;border:2px solid rgba(196,151,58,0.35);display:flex;align-items:center;justify-content:center;position:relative;box-shadow:0 0 40px rgba(196,151,58,0.1);}
-.owl-ring::before{content:'';position:absolute;inset:-14px;border-radius:50%;border:1px dashed rgba(196,151,58,0.3);animation:spin 20s linear infinite;}
-.hero-tag{position:absolute;bottom:0.5rem;right:-1rem;background:var(--ink);color:var(--cream);font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;padding:0.55rem 1.1rem;font-weight:500;}
-
-/* STORY */
-.story{display:grid;grid-template-columns:1fr 1fr;min-height:60vh;overflow:hidden;}
-.story {
-  align-items: center; /* keeps both sides vertically balanced */
-}
-.story-img {
-  overflow: hidden;
-}
-
-.story-img img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* keeps image nicely cropped */
-  border-radius: 8px;
-}
-.story-content{padding:5rem;background:var(--cream);display:flex;flex-direction:column;justify-content:center;}
-.section-label{font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);font-weight:500;margin-bottom:1.2rem;}
-.story-content h2{font-family:'Playfair Display',Georgia,serif;font-size:clamp(1.8rem,3vw,2.5rem);font-weight:700;line-height:1.2;margin-bottom:1.5rem;}
-.story-content p{font-size:1rem;line-height:1.85;color:var(--warm-brown);}
-
-/* EXPERTISE */
-.expertise{padding:6rem 5%;background:var(--soft-bg);}
-.expertise-header{text-align:center;margin-bottom:4rem;}
-.expertise-header h2{font-family:'Playfair Display',Georgia,serif;font-size:clamp(2rem,4vw,3rem);font-weight:700;margin-bottom:0.8rem;}
-.expertise-header p{color:var(--muted);}
-.expertise-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
-.expertise-card{background:var(--cream);padding:2.5rem 2rem;border:1px solid rgba(196,151,58,0.15);transition:transform 0.25s,box-shadow 0.25s;position:relative;overflow:hidden;}
-.expertise-card::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--gold);transition:width 0.4s;}
-.expertise-card:hover{transform:translateY(-5px);box-shadow:0 12px 40px rgba(196,151,58,0.12);}
-.expertise-card:hover::after{width:100%;}
-.card-icon{width:50px;height:50px;background:var(--gold);color:var(--cream);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:1.4rem;}
-.expertise-card h3{font-family:'Playfair Display',Georgia,serif;font-size:1.18rem;font-weight:600;margin-bottom:0.75rem;}
-.expertise-card p{font-size:0.92rem;line-height:1.75;color:var(--muted);}
-
-/* PROMISE */
-.promise{padding:7rem 5%;background:var(--ink);color:var(--cream);text-align:center;position:relative;overflow:hidden;}
-.promise::before{content:'';position:absolute;top:-40%;left:50%;transform:translateX(-50%);width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(196,151,58,0.1),transparent 70%);pointer-events:none;}
-.promise h2{font-family:'Playfair Display',Georgia,serif;font-size:clamp(1.8rem,4vw,3rem);font-weight:700;line-height:1.3;max-width:700px;margin:0 auto 1.5rem;}
-.promise h2 em{font-style:italic;color:var(--gold-light);}
-.promise .sub{font-size:1.05rem;line-height:1.8;color:rgba(245,240,232,0.65);max-width:560px;margin:0 auto 2.5rem;}
-.promise-banner{max-width:800px;margin:3rem auto 0;background:linear-gradient(135deg,#2a1f0e,#3d2c15);border-radius:4px;border:1px solid rgba(196,151,58,0.25);padding:3.5rem 2rem;display:flex;align-items:center;justify-content:center;gap:2rem;flex-wrap:wrap;}
-.promise-stat{text-align:center;}
-.promise-stat .num{font-family:'Playfair Display',Georgia,serif;font-size:2.8rem;font-weight:700;color:var(--gold-light);display:block;}
-.promise-stat .lbl{font-size:0.82rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(245,240,232,0.5);}
-.pdivider{width:1px;height:60px;background:rgba(196,151,58,0.25);}
-
-/* INDUSTRIES */
-.industries{padding:5rem 5%;background:var(--cream);text-align:center;}
-.industries h2{font-family:'Playfair Display',Georgia,serif;font-size:2rem;font-weight:700;margin-bottom:2rem;}
-.industry-tags{display:flex;flex-wrap:wrap;gap:0.8rem;justify-content:center;}
-.itag{background:transparent;border:1.5px solid rgba(196,151,58,0.35);color:var(--warm-brown);padding:0.5rem 1.2rem;font-size:0.88rem;font-weight:500;border-radius:2px;letter-spacing:0.05em;transition:background 0.2s,color 0.2s,border-color 0.2s;cursor:default;display:inline-block;}
-.itag:hover{background:var(--gold);color:var(--ink);border-color:var(--gold);}
-
-/* TESTIMONIAL */
-blockquote {
-  font-style: italic;
-  line-height: 1.6;
-}
-.testimonial-section{padding:6rem 5%;background:var(--soft-bg);text-align:center;}
-.testimonial-header{margin-bottom:3rem;}
-.testimonial-header h2{font-family:'Playfair Display',Georgia,serif;font-size:clamp(1.8rem,3vw,2.5rem);font-weight:700;color:var(--ink);}
-.carousel-wrapper{position:relative;max-width:780px;margin:0 auto;overflow:hidden;}
-.carousel-track{display:flex;transition:transform 0.6s cubic-bezier(0.4,0,0.2,1);}
-.carousel-slide{min-width:100%;padding:0 3rem;}
-.carousel-slide blockquote{position:relative;padding:2.5rem 2.5rem 2.5rem 3.5rem;border-left:none solid var(--gold);background:var(--cream);text-align:left;}
-.carousel-slide .qmark{font-family:'Playfair Display',Georgia,serif;font-size:6rem;color:var(--gold-light);position:absolute;top:-1.5rem;left:1rem;line-height:1;}
-.carousel-slide blockquote p{font-family:'Playfair Display',Georgia,serif;font-style:italic;font-size:1.08rem;line-height:1.85;color:var(--ink);}
-.carousel-slide blockquote footer{margin-top:1.2rem;font-size:0.82rem;color:var(--gold);letter-spacing:0.08em;text-transform:uppercase;font-weight:600;font-style:normal;}
-.carousel-dots{display:flex;justify-content:center;gap:0.6rem;margin-top:2rem;}
-.dot{width:10px;height:10px;border-radius:50%;background:rgba(196,151,58,0.25);cursor:pointer;transition:background 0.3s,transform 0.3s;display:inline-block;}
-.dot.active{background:var(--gold);transform:scale(1.3);}
-.carousel-btn{position:absolute;top:50%;transform:translateY(-50%);background:var(--ink);color:var(--gold-light);border:none;width:40px;height:40px;border-radius:50%;font-size:1.4rem;cursor:pointer;line-height:1;transition:background 0.2s;z-index:2;display:flex;align-items:center;justify-content:center;}
-.carousel-btn:hover{background:var(--gold);color:var(--ink);}
-.carousel-btn.prev{left:0;}
-.carousel-btn.next{right:0;}
-
-/* WORK SAMPLES & SOCIAL — MARQUEE + INLINE PREVIEW */
-.work-social-section{padding:6rem 0;background:var(--cream);overflow:hidden;}
-.work-social-header{text-align:center;margin-bottom:4rem;padding:0 5%;}
-.work-social-header h2{font-family:'Playfair Display',Georgia,serif;font-size:clamp(2rem,4vw,2.8rem);font-weight:700;margin-bottom:0.8rem;}
-.work-social-header p{color:var(--muted);font-size:1rem;}
-
-/* Portfolio cards — centered horizontal scroll snap */
-.portfolio-label{font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);font-weight:500;margin-bottom:1.5rem;padding:0 5%;text-align:center;display:block;}
-.portfolio-scroller-wrap{display:flex;justify-content:center;padding:0.5rem 5% 2rem;}
-.portfolio-scroller{display:flex;gap:1.8rem;justify-content:center;flex-wrap:wrap;max-width:1200px;width:100%;}
-.portfolio-card{flex:0 0 320px;background:var(--soft-bg);border:1px solid rgba(196,151,58,0.18);border-radius:8px;overflow:hidden;transition:transform 0.3s,box-shadow 0.3s;cursor:pointer;position:relative;text-decoration:none;color:inherit;}
-.portfolio-card:hover{transform:translateY(-6px);box-shadow:0 16px 48px rgba(196,151,58,0.22);}
-
-/* Dark thumbnail area — same style as "Other Designs" on all cards */
-.portfolio-card-thumb-area{width:100%;height:190px;background:var(--ink);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
-.portfolio-card-thumb-area::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(196,151,58,0.08),transparent 70%);pointer-events:none;}
-.portfolio-card-thumb-title{font-family:'Playfair Display',Georgia,serif;font-size:1.6rem;font-weight:700;color:var(--gold-light);text-align:center;padding:0 1.5rem;line-height:1.25;position:relative;z-index:1;}
-
-.portfolio-card-body{padding:1.2rem 1.4rem 1.4rem;}
-.portfolio-card-num{font-size:0.7rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:0.4rem;text-decoration:none;}
-.portfolio-card-title{font-family:'Playfair Display',Georgia,serif;font-size:1.05rem;font-weight:700;margin-bottom:0.4rem;color:var(--ink);text-decoration:none;}
-.portfolio-card-desc{font-size:0.82rem;line-height:1.6;color:var(--muted);margin-bottom:1rem;text-decoration:none;}
-.portfolio-card-cta{display:inline-flex;align-items:center;gap:0.4rem;font-size:0.8rem;font-weight:600;color:var(--gold);text-decoration:none;letter-spacing:0.05em;text-transform:uppercase;transition:gap 0.2s;}
-.portfolio-card:hover .portfolio-card-cta{gap:0.7rem;}
-.portfolio-card-badge{position:absolute;top:1rem;right:1rem;background:transparent;color:var(--gold-light);font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.3rem 0.7rem;border:1px solid rgba(196,151,58,0.4);}
-@media(max-width:768px){.portfolio-scroller{flex-direction:column;align-items:center;}.portfolio-card{flex:0 0 auto;width:100%;max-width:360px;}}
-
-/* Social marquee */
-.social-marquee-wrapper{margin-top:3.5rem;padding-top:2.5rem;border-top:1px solid rgba(196,151,58,0.18);}
-.social-marquee-label{font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);font-weight:500;margin-bottom:1.4rem;padding:0 5%;text-align:center;}
-.marquee-track-outer{overflow:hidden;position:relative;}
-.marquee-track-outer::before,.marquee-track-outer::after{content:'';position:absolute;top:0;bottom:0;width:120px;z-index:2;pointer-events:none;}
-.marquee-track-outer::before{left:0;background:linear-gradient(to right,var(--cream),transparent);}
-.marquee-track-outer::after{right:0;background:linear-gradient(to left,var(--cream),transparent);}
-.marquee-track{display:flex;gap:1.2rem;width:max-content;animation:marqueeScroll 22s linear infinite;}
-.marquee-track:hover{animation-play-state:paused;}
-@keyframes marqueeScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-.marquee-pill{display:inline-flex;align-items:center;gap:0.75rem;padding:0.85rem 1.4rem;background:var(--soft-bg);border:1.5px solid rgba(196,151,58,0.2);border-radius:50px;text-decoration:none;color:var(--ink);white-space:nowrap;transition:all 0.25s;flex-shrink:0;}
-.marquee-pill:hover{background:var(--ink);color:var(--cream);border-color:var(--ink);transform:scale(1.04);}
-.marquee-pill:hover .mpill-handle{color:var(--gold-light);}
-.mpill-icon{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#f9ce34,#ee2a7b,#6228d7);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-.mpill-icon i{color:#fff;font-size:0.85rem;}
-.mpill-handle{font-weight:600;font-size:0.88rem;color:var(--ink);transition:color 0.25s;}
-.marquee-pill:hover .mpill-handle{color:var(--gold-light);}
-.mpill-tag{font-size:0.72rem;color:var(--muted);background:rgba(196,151,58,0.12);padding:0.15rem 0.5rem;border-radius:10px;}
-
-/* CONTACT */
-.contact{padding:6rem 5%;background:var(--ink);display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;}
-.contact-info{color:var(--cream);}
-.contact-info h2{font-family:'Playfair Display',Georgia,serif;font-size:2.5rem;font-weight:700;margin-bottom:1rem;line-height:1.2;}
-.contact-info h2 span{color:var(--gold-light);font-style:italic;}
-.contact-info > p{color:rgba(245,240,232,0.65);font-size:1rem;line-height:1.75;margin-bottom:1rem;}
-.cdetail{display:flex;align-items:center;gap:0.8rem;color:rgba(245,240,232,0.75);font-size:0.92rem;margin-bottom:0.7rem;}
-.cdetail a{color:var(--gold-light);text-decoration:none;}
-.contact-form{background:rgba(255,255,255,0.04);padding:2.5rem;border:1px solid rgba(196,151,58,0.2);}
-.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
-.form-group{display:flex;flex-direction:column;margin-bottom:1rem;}
-.form-group label{font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(245,240,232,0.45);margin-bottom:0.4rem;}
-.form-group input,.form-group textarea{background:rgba(255,255,255,0.05);border:1px solid rgba(196,151,58,0.22);color:var(--cream);padding:0.8rem 1rem;font-family:'DM Sans',Georgia,sans-serif;font-size:0.95rem;outline:none;transition:border-color 0.2s;width:100%;}
-.form-group input:focus,.form-group textarea:focus{border-color:var(--gold);}
-.form-group textarea{resize:vertical;min-height:110px;}
-.form-group input::placeholder,.form-group textarea::placeholder{color:rgba(245,240,232,0.25);}
-.btn-submit{background:var(--gold);color:var(--ink);border:none;padding:0.9rem 2.5rem;font-family:'DM Sans',Georgia,sans-serif;font-size:0.9rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;cursor:pointer;width:100%;transition:background 0.25s,transform 0.2s;margin-top:0.5rem;}
-.btn-submit:hover{background:var(--gold-light);transform:translateY(-2px);}
-
-/* FOOTER */
-footer{background:#0F0C09;padding:2rem 5%;display:flex;justify-content:space-between;align-items:center;color:rgba(245,240,232,0.35);font-size:0.82rem;flex-wrap:wrap;gap:1rem;}
-footer a{color:var(--gold);text-decoration:none;}
-footer .nav-logo img{height:60px;}
-
-/* SUCCESS POPUP */
-#successPopup{
-  position:fixed;top:0;left:0;width:100%;height:100%;
-  background:rgba(0,0,0,0.65);
-  display:none;align-items:center;justify-content:center;
-  z-index:9999;
-  opacity:0;
-  transition:opacity 0.35s ease;
-}
-#successPopupInner{
-  background:#FDFAF5;padding:3rem 2.5rem;border-radius:4px;
-  text-align:center;max-width:440px;width:90%;
-  font-family:'DM Sans',Georgia,sans-serif;
-  box-shadow:0 24px 80px rgba(0,0,0,0.4);
-  border-top:4px solid #C4973A;
-  transform:translateY(20px);
-  transition:transform 0.35s ease;
-}
-
-/* ANIMATIONS */
-@keyframes spin{to{transform:rotate(360deg);}}
-
-/* RESPONSIVE */
-@media(max-width:960px){
-  .hero{grid-template-columns:1fr;text-align:center;padding-top:7rem;}
-  .hero-text{padding-right:0;}
-  .hero-desc{margin:0 auto 2rem;}
-  .hero-btns{justify-content:center;}
-  .hero-visual{margin-top:3rem;}
-  .story{grid-template-columns:1fr;}
-  .story-img{min-height:280px;}
-  .story-content{padding:3rem 2rem;}
-  .expertise-grid{grid-template-columns:repeat(2,1fr);}
-  .contact{grid-template-columns:1fr;gap:2.5rem;}
-  .form-row{grid-template-columns:1fr;}
-  .nav-links{display:none;}
-  .pdivider{display:none;}
-}
-@media(max-width:580px){
-  .expertise-grid{grid-template-columns:1fr;}
-  .carousel-slide{padding:0 0.5rem;}
-  .carousel-btn{display:none;}
-}
-@keyframes whatsappPulse {
-  0% {
-    transform: scale(1);
-    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6);
-  }
-  70% {
-    transform: scale(1.08);
-    box-shadow: 0 0 0 12px rgba(37, 211, 102, 0);
-  }
-  100% {
-    transform: scale(1);
-    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
-  }
-}
-
-.whatsapp-float {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  width: 55px;
-  height: 55px;
-  z-index: 999;
-}
-
-.whatsapp-float img {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-  animation: whatsappPulse 2s infinite;
-  transition: transform 0.2s ease;
-}
-
-.whatsapp-float img:hover {
-  transform: scale(1.1);
-}
-.whatsapp-container {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  z-index: 999;
-}
-
-/* Tooltip ABOVE */
-.whatsapp-tooltip {
-  position: absolute;
-  bottom: 70px; /* pushes it above icon */
-  right: 0;
-
-  background: #1A1612;
-  color: #F5F0E8;
-  padding: 6px 12px;
-  font-size: 0.75rem;
-  border-radius: 4px;
-
-  opacity: 0;
-  transform: translateY(10px);
-  transition: all 0.3s ease;
-
-  white-space: nowrap;
-  pointer-events: none;
-}
-
-/* Show on hover */
-.whatsapp-container:hover .whatsapp-tooltip {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Arrow pointing DOWN to icon */
-.whatsapp-tooltip::after {
-  content: '';
-  position: absolute;
-  bottom: -6px;
-  right: 12px;
-
-  border-width: 6px;
-  border-style: solid;
-  border-color: #1A1612 transparent transparent transparent;
-}
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease;}
+  .reveal.in{opacity:1;transform:none;}
+  @media (prefers-reduced-motion: reduce){.reveal{opacity:1;transform:none;transition:none;} html{scroll-behavior:auto;}}
 </style>
 </head>
 <body>
 
-<iframe name="hidden_iframe" style="display:none;"></iframe>
+<header class="site">
+  <div class="wrap">
+    <a href="#" class="logo"><img src="logo-white.png" alt="Karpanai Studios"></a>
+    <nav class="links">
+      <a href="#story">About</a>
+      <a href="#process">Process</a>
+      <a href="#expertise">Services</a>
+    </nav>
+    <a href="#contact" class="btn ghost-ink">Let's Talk</a>
+  </div>
+</header>
 
-<!-- NAV -->
-<nav>
-  <a class="nav-logo" href="#">
-    <img src="logo-color.png" alt="Karpanai Studios">
-  </a>
-  <ul class="nav-links">
-    <li><a href="#story">About</a></li>
-    <li><a href="#expertise">Services</a></li>
-    <li><a href="#contact" class="nav-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'});return false;">Let's Talk</a></li>
-  </ul>
-</nav>
-
-<!-- HERO -->
 <section class="hero">
-  <div class="hero-text">
-    <span class="hero-eyebrow">Design Studio &middot; Est. 2010</span>
-    <h1>Crafting <em>Meaningful</em><br>Brand Identities</h1>
-    <p class="hero-desc">Empowering businesses through thoughtful design and strategic visual communication.</p>
-    <div class="hero-btns">
-      <a href="#contact" class="btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'});return false;">Get in Touch</a>
-      <a href="https://online.fliphtml5.com/gyaef/nmlx/" target="_blank" class="btn-secondary">Company Profile &rarr;</a>
+  <div class="hero-blob b1"></div>
+  <div class="hero-blob b2"></div>
+  <div class="hero-blob b3"></div>
+  <div class="hero-content">
+    <div class="hero-badge"><span class="dot"></span>Crafting Meaningful Brand Identities</div>
+    <h1>Design That You<br>Actually Need</h1>
+    <p class="lede">Elevate your brand with thoughtful identity and digital design. Showcase your story through bold visuals and strategic solutions.</p>
+    <div class="cta-row">
+      <a href="#contact" class="btn ghost-ink">Book a Free Call</a>
+      <a href="#work" class="btn ghost-ink">See Projects</a>
     </div>
   </div>
-  <div class="hero-visual">
-    <div class="owl-ring">
-      <a class="nav-logo" href="#">
-        <img src="logo-white.png" alt="Karpanai Studios" style="width:310px;height:auto;padding:0.5rem;">
-      </a>
+  <div class="hero-scroll">
+    <span>Scroll down</span>
+    <span class="mouse"><span class="wheel"></span></span>
+    <span>to see projects</span>
+  </div>
+</section>
+
+<section class="about" id="story">
+  <div class="wrap">
+    <div class="about-img reveal">
+      <div class="frame"></div>
+      <img src="https://karpanaistudios.github.io/our-story.jpg" alt="Our Story — Karpanai Studios">
+    </div>
+    <div class="reveal">
+      <div class="eyebrow">Who We Are</div>
+      <h2>Our Story</h2>
+      <p>Welcome to Karpanai Studios, where imagination takes flight!</p>
+      <p>Our journey began with a simple vision: to transform ideas into meaningful designs that seamlessly connect people with technology.</p>
+      <p>What started as a creative design initiative has blossomed into a full-fledged UX and product design studio, dedicated to bringing your concepts to life.</p>
+      <p>Join us as we navigate the intersection of creativity and innovation!</p>
     </div>
   </div>
 </section>
 
-<!-- STORY -->
-<section class="story" id="story">
- <div class="story-img">
-  <img src="our-story.jpg" alt="Our Story">
-  <div class="story-overlay"></div>
-</div>
-  <div class="story-content">
-    <p class="section-label">Who We Are</p>
-    <h2>Our Story</h2>
-    <p>Welcome to Karpanai Studios, where imagination takes flight!<br><p> Our journey began with a simple vision: to transform ideas into meaningful designs that seamlessly connect people with technology.<br> <p>What started as a creative design initiative has blossomed into a full-fledged UX and product design studio, dedicated to bringing your concepts to life. <br><p>Join us as we navigate the intersection of creativity and innovation!</p></p></p></p>
+<section class="process" id="process">
+  <div class="wrap">
+    <div class="eyebrow">Design Process</div>
+    <h2>How We Work</h2>
+    <p>A clear, considered path from first conversation to final delivery.</p>
+    <div class="process-steps">
+      <div class="process-step reveal">
+        <div class="n">01</div>
+        <h3>Define Your Vision</h3>
+        <p>We start by understanding your goals and constraints, then map out the right scope, timeline, and approach so the direction is clear before any design work begins.</p>
+      </div>
+      <div class="process-step reveal">
+        <div class="n">02</div>
+        <h3>Submit Your Request</h3>
+        <p>Share your brief through our design portal. We take time to understand what you're building, ask the right questions, and turn your vision into a workable plan.</p>
+      </div>
+      <div class="process-step reveal">
+        <div class="n">03</div>
+        <h3>Project Delivered</h3>
+        <p>Our team carries the project through with care and attention to detail, keeping you updated at each stage until the final work is delivered — on time and to spec.</p>
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- EXPERTISE -->
-<section class="expertise" id="expertise">
-  <div class="expertise-header">
-    <p class="section-label">What We Do</p>
+<section class="services" id="expertise">
+  <div class="wrap">
+    <div class="eyebrow">What We Do</div>
     <h2>Our Expertise</h2>
     <p>Purposeful design across every touchpoint.</p>
-  </div>
-  <div class="expertise-grid">
-    <div class="expertise-card"><div class="card-icon">&#127912;</div><h3>Brand Identity</h3><p>We craft distinctive and compelling brand identities that connect with your target audience and help you stand out from the competition.</p></div>
-    <div class="expertise-card"><div class="card-icon">&#128187;</div><h3>Digital Experiences</h3><p>Our team excels in designing immersive and user-centric digital experiences that captivate and engage your audience, driving meaningful interactions.</p></div>
-    <div class="expertise-card"><div class="card-icon">&#128226;</div><h3>Visual Communication</h3><p>We provide strategic visual communication solutions that effectively deliver your brand's message across multiple platforms.</p></div>
-    <div class="expertise-card"><div class="card-icon">&#128202;</div><h3>Consulting Services</h3><p>Our consulting services are designed to elevate customer experiences by harnessing insights and analytics, driving both growth and innovation.</p></div>
-    <div class="expertise-card"><div class="card-icon">&#128421;</div><h3>UI/UX Design</h3><p>We design intuitive and user-focused interfaces that enhance usability and create seamless digital experiences. Our UI/UX solutions improve engagement, simplify interactions, and ensure your product delivers real value to users.</p></div>
-    <div class="expertise-card"><div class="card-icon">&#127891;</div><h3>UX &amp; Graphic Design Classes</h3><p>We offer practical, industry-focused training in UX and graphic design to help you build real-world skills. Our classes cover design fundamentals, tools, and hands-on projects to grow your creative career.</p></div>
+    <div class="grid-services">
+      <div class="svc-card reveal">
+        <div class="ico">🎨</div>
+        <h3>Brand Identity</h3>
+        <p>We craft distinctive and compelling brand identities that connect with your target audience and help you stand out from the competition.</p>
+      </div>
+      <div class="svc-card reveal">
+        <div class="ico">💻</div>
+        <h3>Digital Experiences</h3>
+        <p>Our team excels in designing immersive and user-centric digital experiences that captivate and engage your audience, driving meaningful interactions.</p>
+      </div>
+      <div class="svc-card reveal">
+        <div class="ico">📢</div>
+        <h3>Visual Communication</h3>
+        <p>We provide strategic visual communication solutions that effectively deliver your brand's message across multiple platforms.</p>
+      </div>
+      <div class="svc-card reveal">
+        <div class="ico">📊</div>
+        <h3>Consulting Services</h3>
+        <p>Our consulting services are designed to elevate customer experiences by harnessing insights and analytics, driving both growth and innovation.</p>
+      </div>
+      <div class="svc-card reveal">
+        <div class="ico">🖥</div>
+        <h3>UI/UX Design</h3>
+        <p>We design intuitive and user-focused interfaces that enhance usability and create seamless digital experiences that deliver real value to users.</p>
+      </div>
+      <div class="svc-card reveal">
+        <div class="ico">🎓</div>
+        <h3>UX & Graphic Design Classes</h3>
+        <p>Practical, industry-focused training in UX and graphic design — covering fundamentals, tools, and hands-on projects to grow your creative career.</p>
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- PROMISE -->
-<section class="promise">
-  <p class="section-label" style="color:var(--gold-light)">Our Commitment</p>
-  <h2>We partner with businesses to elevate their vision with <em><p>smart design.</em></h2></p>
-  <p class="sub">Every project is a new story &mdash; and we're here to make it unforgettable.</p>
-  <a href="#contact" class="btn-primary" style="background:var(--gold);color:var(--ink)" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'});return false;">Start Your Story</a>
-  <div class="promise-banner">
-    <div class="promise-stat"><span class="num">100+</span><span class="lbl">Projects Delivered</span></div>
-    <div class="pdivider"></div>
-    <div class="promise-stat"><span class="num">12</span><span class="lbl">Industries Served</span></div>
-    <div class="pdivider"></div>
-    <div class="promise-stat"><span class="num">100%</span><span class="lbl">Client Satisfaction</span></div>
+<div class="tagband">
+  <div class="marquee-row r1">
+    <span class="pill"><span class="ic">✎</span>Copywriting</span>
+    <span class="pill"><span class="ic">▤</span>Brand Graphics</span>
+    <span class="pill"><span class="ic">⇄</span>Brand Migration</span>
+    <span class="pill"><span class="ic">▨</span>Package Design</span>
+    <span class="pill"><span class="ic">◎</span>Branding</span>
+    <span class="pill"><span class="ic">▥</span>Slide Decks</span>
+    <span class="pill"><span class="ic">✎</span>Copywriting</span>
+    <span class="pill"><span class="ic">▤</span>Brand Graphics</span>
+    <span class="pill"><span class="ic">⇄</span>Brand Migration</span>
+    <span class="pill"><span class="ic">▨</span>Package Design</span>
+    <span class="pill"><span class="ic">◎</span>Branding</span>
+    <span class="pill"><span class="ic">▥</span>Slide Decks</span>
   </div>
-</section>
-
-<!-- INDUSTRIES -->
-<section class="insights-section">
-
-  <!-- LEFT: INDUSTRIES -->
-  <div class="insights-left">
-    <p class="section-label">Sectors</p>
-    <h2>Industries We Serve</h2>
-
- <div class="industry-tags">
-
-  <span class="itag"><i class="fas fa-laptop-code"></i> Technology</span>
-
-  <span class="itag"><i class="fas fa-heartbeat"></i> Healthcare</span>
-
-  <span class="itag"><i class="fas fa-cart-shopping"></i> E-Commerce</span>
-
-  <span class="itag"><i class="fas fa-graduation-cap"></i> Education</span>
-
-  <span class="itag"><i class="fas fa-chart-line"></i> Finance</span>
-
-  <span class="itag"><i class="fas fa-building"></i> Real Estate</span>
-
-  <span class="itag"><i class="fas fa-brain"></i> Artificial Intelligence</span>
-
+  <div class="marquee-row r2">
+    <span class="pill"><span class="ic">⚡</span>Optimization</span>
+    <span class="pill"><span class="ic">▦</span>Brand Landing Pages</span>
+    <span class="pill"><span class="ic">➤</span>Social Media</span>
+    <span class="pill"><span class="ic">✦</span>Icons</span>
+    <span class="pill"><span class="ic">⌕</span>Brand Visibility</span>
+    <span class="pill"><span class="ic">⏱</span>Brand Integrations</span>
+    <span class="pill"><span class="ic">⚡</span>Optimization</span>
+    <span class="pill"><span class="ic">▦</span>Brand Landing Pages</span>
+    <span class="pill"><span class="ic">➤</span>Social Media</span>
+    <span class="pill"><span class="ic">✦</span>Icons</span>
+    <span class="pill"><span class="ic">⌕</span>Brand Visibility</span>
+    <span class="pill"><span class="ic">⏱</span>Brand Integrations</span>
+  </div>
 </div>
-  </div>
 
-  <!-- RIGHT: TESTIMONIAL -->
-  <div class="insights-right">
-    <p class="section-label">Client Testimonials</p>
-    <h2>What Our Clients Say</h2>
-
-    <div class="carousel-wrapper">
-      <div class="carousel-track" id="carouselTrack">
-        
-        <div class="carousel-slide">
-          <blockquote>
-            <div class="qmark">&ldquo;</div>
-            <p>I had an incredible experience working with Karpanai Studios. Their creativity, attention to detail, and ability to translate my ideas into visually stunning designs truly exceeded my expectations. From start to finish, they were professional, responsive, and delivered high-quality work on time. I highly recommend Karpanai Studios to anyone looking for a talented and reliable graphic designer.</p>
-            <footer>&mdash; Eswari Edu Ventures</footer>
-          </blockquote>
-        </div>
-
-        <div class="carousel-slide">
-          <blockquote>
-            <div class="qmark">&ldquo;</div>
-            <p>Our product UX went from confusing to seamless. Thanks to the team forhelping us improve the experience and increase retention!</p>
-            <footer>&mdash; Narmtech</footer>
-          </blockquote>
-        </div>
-
-        <div class="carousel-slide">
-          <blockquote>
-            <div class="qmark">&ldquo;</div>
-            <p>“Karpanai Studios' strategic insights and consulting services have helped us elevate our customer experience, resulting in tangible improvements in customer satisfaction and loyalty.”</p>
-            <footer>&mdash; Tie-Up Events</footer>
-          </blockquote>
-        </div>
-
-      </div>
-
-      <div class="carousel-dots" id="carouselDots">
-        <span class="dot active" onclick="goToSlide(0)"></span>
-        <span class="dot" onclick="goToSlide(1)"></span>
-        <span class="dot" onclick="goToSlide(2)"></span>
-      </div>
-
-      <button class="carousel-btn prev" onclick="changeSlide(-1)">&#8249;</button>
-      <button class="carousel-btn next" onclick="changeSlide(1)">&#8250;</button>
+<section class="commit">
+  <div class="wrap">
+    <div class="eyebrow on-ink" style="justify-content:center;">Our Commitment</div>
+    <h2>We partner with businesses to elevate their vision with <em>smart design.</em></h2>
+    <p class="sub">Every project is a new story — and we're here to make it unforgettable.</p>
+    <a href="#contact" class="btn solid">Start Your Story</a>
+    <div class="stats">
+      <div><div class="num">100+</div><div class="lbl">Projects Delivered</div></div>
+      <div><div class="num">12</div><div class="lbl">Industries Served</div></div>
+      <div><div class="num">100%</div><div class="lbl">Client Satisfaction</div></div>
     </div>
   </div>
-
 </section>
 
-<!-- WORK SAMPLES & SOCIAL MEDIA -->
-<section class="work-social-section" id="work-samples">
-
-  <div class="work-social-header">
-    <p class="section-label">Portfolio &amp; Connect</p>
-    <h2>Work Samples &amp; Social Media</h2>
-    <p>Browse our portfolio inline — click any card to preview. Follow us on Instagram.</p>
+<section class="sectors">
+  <div class="wrap">
+    <div class="eyebrow">Sectors</div>
+    <h2>Industries We Serve</h2>
+    <div class="sector-pills">
+      <span>Technology</span><span>Healthcare</span><span>E-Commerce</span>
+      <span>Education</span><span>Finance</span><span>Real Estate</span><span>Artificial Intelligence</span>
+    </div>
   </div>
+</section>
 
-  <!-- Portfolio horizontal scroll -->
-  <p class="portfolio-label">Work Samples</p>
-  <div class="portfolio-scroller-wrap">
-  <div class="portfolio-scroller">
-
-    <a class="portfolio-card" href="https://sivarajrajendran.crevado.com/others" target="_blank" rel="noopener">
-      <div class="portfolio-card-badge">Portfolio</div>
-      <div class="portfolio-card-thumb-area">
-        <span class="portfolio-card-thumb-title">LinkedIn Posts</span>
+<section class="work" id="work">
+  <div class="wrap">
+    <div class="work-head">
+      <div>
+        <div class="eyebrow">Portfolio & Connect</div>
+        <h2>Work Samples & Social Media</h2>
       </div>
-      <div class="portfolio-card-body">
-        <div class="portfolio-card-num">01 &mdash; LinkedIn</div>
-        <div class="portfolio-card-title">LinkedIn Posts</div>
-        <div class="portfolio-card-desc">Images designed and posted on LinkedIn — crafted to engage and communicate.</div>
-        <span class="portfolio-card-cta">Visit Portfolio &rarr;</span>
-      </div>
-    </a>
-
-    <a class="portfolio-card" href="https://sivarajrajendran.crevado.com/External" target="_blank" rel="noopener">
-      <div class="portfolio-card-badge">Portfolio</div>
-      <div class="portfolio-card-thumb-area">
-        <span class="portfolio-card-thumb-title">Communications</span>
-      </div>
-      <div class="portfolio-card-body">
-        <div class="portfolio-card-num">02 &mdash; Communications</div>
-        <div class="portfolio-card-title">Communications</div>
-        <div class="portfolio-card-desc">Text-first work — images chosen to amplify the message without extra context.</div>
-        <span class="portfolio-card-cta">Visit Portfolio &rarr;</span>
-      </div>
-    </a>
-
-    <a class="portfolio-card" href="https://karpanaistudios.weebly.com/design.html" target="_blank" rel="noopener">
-      <div class="portfolio-card-badge">Design</div>
-      <div class="portfolio-card-thumb-area">
-        <span class="portfolio-card-thumb-title">Other Designs</span>
-      </div>
-      <div class="portfolio-card-body">
-        <div class="portfolio-card-num">03 &mdash; Design</div>
-        <div class="portfolio-card-title">Other Designs</div>
-        <div class="portfolio-card-desc">Color, vectors, and effects used to convey emotion in every piece.</div>
-        <span class="portfolio-card-cta">Visit Portfolio &rarr;</span>
-      </div>
-    </a>
-
-  </div>
-  </div>
-
-  <!-- Social media marquee -->
-  <div class="social-marquee-wrapper">
-    <p class="social-marquee-label"><i class="fab fa-instagram" style="margin-right:0.4rem"></i> Social Media Handles</p>
-    <div class="marquee-track-outer">
-      <div class="marquee-track" id="marqueeTrack">
-        <!-- Set 1 -->
-        <a href="https://www.instagram.com/shriramschooltindivanam/" target="_blank" rel="noopener" class="marquee-pill">
-          <span class="mpill-icon"><i class="fab fa-instagram"></i></span>
-          <span class="mpill-handle">@shriramschooltindivanam</span>
-          <span class="mpill-tag">School</span>
-        </a>
-        <a href="https://www.instagram.com/cinematic360.in/" target="_blank" rel="noopener" class="marquee-pill">
-          <span class="mpill-icon"><i class="fab fa-instagram"></i></span>
-          <span class="mpill-handle">@cinematic360.in</span>
-          <span class="mpill-tag">Cinematic</span>
-        </a>
-        <a href="https://www.instagram.com/vinuhasan/" target="_blank" rel="noopener" class="marquee-pill">
-          <span class="mpill-icon"><i class="fab fa-instagram"></i></span>
-          <span class="mpill-handle">@vinuhasan</span>
-          <span class="mpill-tag">Personal</span>
-        </a>
-        <!-- Duplicate set for seamless loop -->
-        <a href="https://www.instagram.com/shriramschooltindivanam/" target="_blank" rel="noopener" class="marquee-pill">
-          <span class="mpill-icon"><i class="fab fa-instagram"></i></span>
-          <span class="mpill-handle">@shriramschooltindivanam</span>
-          <span class="mpill-tag">School</span>
-        </a>
-        <a href="https://www.instagram.com/cinematic360.in/" target="_blank" rel="noopener" class="marquee-pill">
-          <span class="mpill-icon"><i class="fab fa-instagram"></i></span>
-          <span class="mpill-handle">@cinematic360.in</span>
-          <span class="mpill-tag">Cinematic</span>
-        </a>
-        <a href="https://www.instagram.com/vinuhasan/" target="_blank" rel="noopener" class="marquee-pill">
-          <span class="mpill-icon"><i class="fab fa-instagram"></i></span>
-          <span class="mpill-handle">@vinuhasan</span>
-          <span class="mpill-tag">Personal</span>
-        </a>
-        <!-- Third set to ensure full width coverage -->
-        <a href="https://www.instagram.com/shriramschooltindivanam/" target="_blank" rel="noopener" class="marquee-pill">
-          <span class="mpill-icon"><i class="fab fa-instagram"></i></span>
-          <span class="mpill-handle">@shriramschooltindivanam</span>
-          <span class="mpill-tag">School</span>
-        </a>
-        <a href="https://www.instagram.com/cinematic360.in/" target="_blank" rel="noopener" class="marquee-pill">
-          <span class="mpill-icon"><i class="fab fa-instagram"></i></span>
-          <span class="mpill-handle">@cinematic360.in</span>
-          <span class="mpill-tag">Cinematic</span>
-        </a>
-        <a href="https://www.instagram.com/vinuhasan/" target="_blank" rel="noopener" class="marquee-pill">
-          <span class="mpill-icon"><i class="fab fa-instagram"></i></span>
-          <span class="mpill-handle">@vinuhasan</span>
-          <span class="mpill-tag">Personal</span>
-        </a>
-        <!-- Fourth set -->
-        <a href="https://www.instagram.com/shriramschooltindivanam/" target="_blank" rel="noopener" class="marquee-pill">
-          <span class="mpill-icon"><i class="fab fa-instagram"></i></span>
-          <span class="mpill-handle">@shriramschooltindivanam</span>
-          <span class="mpill-tag">School</span>
-        </a>
-        <a href="https://www.instagram.com/cinematic360.in/" target="_blank" rel="noopener" class="marquee-pill">
-          <span class="mpill-icon"><i class="fab fa-instagram"></i></span>
-          <span class="mpill-handle">@cinematic360.in</span>
-          <span class="mpill-tag">Cinematic</span>
-        </a>
-        <a href="https://www.instagram.com/vinuhasan/" target="_blank" rel="noopener" class="marquee-pill">
-          <span class="mpill-icon"><i class="fab fa-instagram"></i></span>
-          <span class="mpill-handle">@vinuhasan</span>
-          <span class="mpill-tag">Personal</span>
-        </a>
+      <p>Browse our portfolio inline — click any card to preview. Follow us on Instagram.</p>
+    </div>
+    <div class="work-grid">
+      <a class="work-card reveal" href="https://sivarajrajendran.crevado.com/others" target="_blank" rel="noopener">
+        <div class="work-thumb">LinkedIn Posts</div>
+        <div class="work-body"><div class="idx">01 — LinkedIn</div><h3>LinkedIn Posts</h3><p>Images designed and posted on LinkedIn — crafted to engage and communicate.</p></div>
+      </a>
+      <a class="work-card reveal" href="https://sivarajrajendran.crevado.com/External" target="_blank" rel="noopener">
+        <div class="work-thumb">Communications</div>
+        <div class="work-body"><div class="idx">02 — Communications</div><h3>Communications</h3><p>Text-first work — images chosen to amplify the message without extra context.</p></div>
+      </a>
+      <a class="work-card reveal" href="https://karpanaistudios.weebly.com/design.html" target="_blank" rel="noopener">
+        <div class="work-thumb">Other Designs</div>
+        <div class="work-body"><div class="idx">03 — Design</div><h3>Other Designs</h3><p>Color, vectors, and effects used to convey emotion in every piece.</p></div>
+      </a>
+    </div>
+    <div class="social-handles reveal">
+      <h3>Social Media Handles</h3>
+      <div class="handle-row">
+        <a href="https://www.instagram.com/shriramschooltindivanam/" target="_blank" rel="noopener">@shriramschooltindivanam — School</a>
+        <a href="https://www.instagram.com/cinematic360.in/" target="_blank" rel="noopener">@cinematic360.in — Cinematic</a>
+        <a href="https://www.instagram.com/vinuhasan/" target="_blank" rel="noopener">@vinuhasan — Personal</a>
       </div>
     </div>
   </div>
-
 </section>
 
-<!-- CONTACT -->
+<section class="testi">
+  <div class="wrap">
+    <div class="eyebrow">Client Testimonials</div>
+    <h2 style="font-size:clamp(26px,3.4vw,38px);">What Our Clients Say</h2>
+    <div class="testi-track-wrap">
+      <div class="testi-track" id="testiTrack">
+        <div class="testi-card">
+          <div class="quote-mark">"</div>
+          <p class="q">I had an incredible experience working with Karpanai Studios. Their creativity, attention to detail, and ability to translate my ideas into visually stunning designs truly exceeded my expectations. From start to finish, they were professional, responsive, and delivered high-quality work on time.</p>
+          <div class="who"><div class="id"><div class="avatar">E</div><div class="name">Eswari Edu Ventures</div></div><div class="stars">★★★★★</div></div>
+        </div>
+        <div class="testi-card">
+          <div class="quote-mark">"</div>
+          <p class="q">Our product UX went from confusing to seamless. Thanks to the team for helping us improve the experience and increase retention!</p>
+          <div class="who"><div class="id"><div class="avatar">N</div><div class="name">Narmtech</div></div><div class="stars">★★★★★</div></div>
+        </div>
+        <div class="testi-card">
+          <div class="quote-mark">"</div>
+          <p class="q">Karpanai Studios' strategic insights and consulting services have helped us elevate our customer experience, resulting in tangible improvements in customer satisfaction and loyalty.</p>
+          <div class="who"><div class="id"><div class="avatar">T</div><div class="name">Tie-Up Events</div></div><div class="stars">★★★★★</div></div>
+        </div>
+      </div>
+      <div class="testi-nav">
+        <button id="testiPrev" aria-label="Previous">‹</button>
+        <button id="testiNext" aria-label="Next">›</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="faq">
+  <div class="wrap">
+    <div class="eyebrow">FAQ's</div>
+    <h2 style="font-size:clamp(26px,3.4vw,38px);margin-bottom:8px;">Answers</h2>
+    <p style="color:var(--text-soft);max-width:520px;">Find answers to common questions about our design process, services etc…</p>
+    <div style="margin-top:40px;">
+      <div class="faq-item open">
+        <button>What services do you provide? <span class="plus">+</span></button>
+        <div class="a"><p>Brand identity, digital experiences, visual communication, consulting, UI/UX design, and UX & graphic design classes.</p></div>
+      </div>
+      <div class="faq-item">
+        <button>How do I start working with you? <span class="plus">+</span></button>
+        <div class="a"><p>Reach out through the contact form or WhatsApp — we'll set up a call to understand your project and scope.</p></div>
+      </div>
+      <div class="faq-item">
+        <button>What design tools do you use? <span class="plus">+</span></button>
+        <div class="a"><p>Primarily Figma for UX/UI work, alongside the Adobe Creative Suite for branding and visual communication.</p></div>
+      </div>
+      <div class="faq-item">
+        <button>How long does a project take? <span class="plus">+</span></button>
+        <div class="a"><p>Timelines vary by scope — brand identity work typically runs a few weeks, while full digital experience projects take longer.</p></div>
+      </div>
+      <div class="faq-item">
+        <button>Do you provide revisions? <span class="plus">+</span></button>
+        <div class="a"><p>Yes, revisions are built into every engagement to make sure the final direction fits your brand.</p></div>
+      </div>
+      <div class="faq-item">
+        <button>What industries do you work with? <span class="plus">+</span></button>
+        <div class="a"><p>Technology, Healthcare, E-Commerce, Education, Finance, Real Estate, and Artificial Intelligence.</p></div>
+      </div>
+      <div class="faq-item">
+        <button>Do you offer UX & graphic design classes? <span class="plus">+</span></button>
+        <div class="a"><p>Yes — practical, industry-focused training covering design fundamentals, tools, and hands-on projects.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="contact" id="contact">
-  <div class="contact-info">
-    <p class="section-label" style="color:var(--gold)">Reach Out</p>
-    <h2>Let's <span>Talk</span></h2>
-    <p>Ready to transform your brand?</p> <p>We'd love to hear about your project.</p> <p>Reach out and let's start the conversation.</p>
-    <div class="cdetail">&#9993;&nbsp;<a href="/cdn-cgi/l/email-protection#1d767c6f6d7c737c746e69687974726e5d7a707c7471337e7270">karpanaistudios&#64;gmail.com</a></div>
-    <div class="cdetail">&#128222;&nbsp;&nbsp;+91 9840465309</div>
-  </div>
-  <div class="contact-form">
-    <form id="contactForm">
-      <input type="hidden" name="access_key" value="50bf3809-f61c-4a58-9f82-76342f3ea98d">
-      <input type="hidden" name="subject" value="New Enquiry from Karpanai Studios Website">
-      <input type="hidden" name="from_name" value="Karpanai Studios Website">
-      <!-- Honeypot spam protection -->
-      <input type="checkbox" name="botcheck" style="display:none;">
-      <div class="form-row">
-        <div class="form-group"><label>First Name *</label><input type="text" name="first_name" placeholder="Your first name" required></div>
-        <div class="form-group"><label>Last Name *</label><input type="text" name="last_name" placeholder="Your last name" required></div>
+  <div class="wrap">
+    <div>
+      <div class="eyebrow on-ink">Reach Out</div>
+      <h2>Let's Talk</h2>
+      <p class="sub">Ready to transform your brand? We'd love to hear about your project. Reach out and let's start the conversation.</p>
+      <div class="contact-links">
+        <a href="mailto:karpanaistudios@gmail.com">karpanaistudios@gmail.com</a>
+        <a href="tel:+919840465309">+91 9840465309</a>
       </div>
-      <div class="form-row">
-        <div class="form-group"><label>Email *</label><input type="email" name="email" placeholder="your@email.com" required></div>
-        <div class="form-group"><label>Phone *</label><input type="tel" name="phone" placeholder="+91 00000 00000" required></div>
+    </div>
+    <form class="cform" onsubmit="event.preventDefault(); this.reset(); document.getElementById('sentMsg').style.display='block';">
+      <div class="row2">
+        <div><label>First Name</label><input required></div>
+        <div><label>Last Name</label><input required></div>
       </div>
-      <div class="form-group"><label>Message *</label><textarea name="message" placeholder="Write your message..." required></textarea></div>
-      <button type="submit" class="btn-submit" id="submitBtn">Submit</button>
+      <div class="row2">
+        <div><label>Email</label><input type="email" required></div>
+        <div><label>Phone</label><input type="tel" required></div>
+      </div>
+      <div><label>Message</label><textarea rows="4" required></textarea></div>
+      <button class="btn solid" type="submit">Submit</button>
+      <p id="sentMsg" style="display:none;color:#d9a17f;font-size:13.5px;">Message Sent! We'll review your message and get back to you within 24 hours.</p>
     </form>
   </div>
 </section>
 
-<!-- SUCCESS POPUP -->
-<div id="successPopup" onclick="if(event.target===this)closePopup()">
-  <div id="successPopupInner">
-    <div style="width:64px;height:64px;background:#C4973A;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.5rem;">
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#1A1612" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-    </div>
-    <h2 style="margin-bottom:0.8rem;color:#1A1612;font-family:'Playfair Display',Georgia,serif;font-size:1.6rem;font-weight:700;">Message Sent!</h2>
-    <p style="margin-bottom:0.5rem;color:#6B4C2A;line-height:1.7;font-size:0.98rem;">Thank you for reaching out to <strong>Karpanai Studios</strong>.</p>
-    <p style="margin-bottom:2rem;color:#8A7A68;line-height:1.7;font-size:0.95rem;">We'll review your message and get back to you <br> within 24 hours.</p>
-    <button onclick="closePopup()" style="background:#1A1612;color:#F5F0E8;border:none;padding:0.8rem 2.5rem;cursor:pointer;font-weight:600;font-size:0.88rem;letter-spacing:0.08em;text-transform:uppercase;transition:background 0.2s;" onmouseover="this.style.background='#C4973A';this.style.color='#1A1612';" onmouseout="this.style.background='#1A1612';this.style.color='#F5F0E8';">Close</button>
-  </div>
-</div>
-
-<!-- FOOTER -->
 <footer>
-  <a class="nav-logo" href="#">
-    <img src="logo-white.png" alt="Karpanai Studios">
-  </a>
-  <span style="color:rgba(245,240,232,0.35);">&#169; 2026 by Sivaraj Rajendran &middot; Karpanai Studios</span>
-    <div style="display:flex;gap:0.7rem;align-items:center;">
-    <a href="https://www.instagram.com/karpanai.studios/" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:50%;border:1.5px solid rgba(196,151,58,0.4);color:rgba(245,240,232,0.65);text-decoration:none;transition:all 0.25s;" onmouseover="this.style.background='#C4973A';this.style.color='#1A1612';this.style.borderColor='#C4973A';" onmouseout="this.style.background='';this.style.color='rgba(245,240,232,0.65)';this.style.borderColor='rgba(196,151,58,0.4)';">
-      <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-    </a>
-    <a href="https://www.linkedin.com/company/karpanai-studios/" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:50%;border:1.5px solid rgba(196,151,58,0.4);color:rgba(245,240,232,0.65);text-decoration:none;transition:all 0.25s;" onmouseover="this.style.background='#C4973A';this.style.color='#1A1612';this.style.borderColor='#C4973A';" onmouseout="this.style.background='';this.style.color='rgba(245,240,232,0.65)';this.style.borderColor='rgba(196,151,58,0.4)';">
-      <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-    </a>
+  <div class="wrap">
+    <span>© 2026 by Sivaraj Rajendran · Karpanai Studios</span>
+    <div class="flinks">
+      <a href="https://www.instagram.com/karpanai.studios/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.linkedin.com/company/karpanai-studios/" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-// ── Carousel ──────────────────────────────────────────────
-(function () {
-  var current = 0, total = 3, autoTimer;
+<a class="whatsapp-fab" href="https://wa.me/919840465309?text=Hi%20Karpanai%20Studios%2C%20I%20have%20a%20project%20enquiry" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm5.8 14.06c-.24.68-1.4 1.3-1.93 1.38-.5.08-1.13.11-1.82-.11-.42-.13-.96-.31-1.66-.61-2.92-1.26-4.83-4.2-4.98-4.4-.15-.19-1.19-1.58-1.19-3.01 0-1.43.75-2.13 1.02-2.42.26-.29.57-.36.76-.36.19 0 .38 0 .55.01.18.01.42-.07.65.5.24.58.82 2 .89 2.14.07.15.11.32.02.51-.09.19-.14.31-.27.48-.14.17-.29.37-.41.5-.14.14-.28.29-.12.57.16.28.71 1.18 1.53 1.91 1.05.94 1.94 1.24 2.22 1.38.28.14.44.12.6-.07.17-.19.71-.83.9-1.11.19-.28.38-.24.63-.14.26.09 1.64.78 1.92.92.28.14.47.21.53.33.07.12.07.68-.17 1.36z"/></svg>
+</a>
 
-  function goToSlide(index) {
-    current = (index + total) % total;
-    document.getElementById('carouselTrack').style.transform =
-      'translateX(-' + (current * 100) + '%)';
-    document.querySelectorAll('.dot').forEach(function (d, i) {
-      d.classList.toggle('active', i === current);
+<script>
+  document.querySelectorAll('.faq-item button').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const item = btn.parentElement;
+      const wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
+      if(!wasOpen) item.classList.add('open');
     });
-  }
+  });
 
-  window.goToSlide = goToSlide;
+  const track = document.getElementById('testiTrack');
+  const cardWidth = () => track.querySelector('.testi-card').offsetWidth + 24;
+  document.getElementById('testiNext').addEventListener('click',()=> track.scrollBy({left:cardWidth(),behavior:'smooth'}));
+  document.getElementById('testiPrev').addEventListener('click',()=> track.scrollBy({left:-cardWidth(),behavior:'smooth'}));
 
-  window.changeSlide = function (dir) {
-    clearInterval(autoTimer);
-    goToSlide(current + dir);
-    startAuto();
-  };
-
-  function startAuto() {
-    autoTimer = setInterval(function () { goToSlide(current + 1); }, 4000);
-  }
-
-  startAuto();
-})();
-
-// ── Web3Forms Submit Handler ──────────────────────────────
-document.getElementById('contactForm').addEventListener('submit', async function(e) {
-  e.preventDefault();
-
-  var submitBtn = document.getElementById('submitBtn');
-  submitBtn.disabled = true;
-  submitBtn.textContent = 'Sending...';
-
-  var formData = new FormData(this);
-
-  try {
-    var response = await fetch('https://api.web3forms.com/submit', {
-      method: 'POST',
-      body: formData
-    });
-
-    var data = await response.json();
-
-    if (data.success) {
-      showSuccessPopup();
-      this.reset();
-    } else {
-      alert('Something went wrong. Please try again or email us directly.');
-    }
-  } catch (error) {
-    alert('Network error. Please check your connection and try again.');
-  } finally {
-    submitBtn.disabled = false;
-    submitBtn.textContent = 'Submit';
-  }
-});
-
-// ── Success Popup ─────────────────────────────────────────
-function showSuccessPopup() {
-  var popup = document.getElementById('successPopup');
-  var inner = document.getElementById('successPopupInner');
-
-  popup.style.display = 'flex';
-
-  setTimeout(function () {
-    popup.style.opacity = '1';
-    inner.style.transform = 'translateY(0)';
-  }, 10);
-}
-
-function closePopup() {
-  var popup = document.getElementById('successPopup');
-  var inner = document.getElementById('successPopupInner');
-
-  popup.style.opacity = '0';
-  inner.style.transform = 'translateY(20px)';
-
-  setTimeout(function () {
-    popup.style.display = 'none';
-  }, 350);
-}
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  },{threshold:.15});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 </script>
 
-<div class="whatsapp-container">
-  <span class="whatsapp-tooltip">Chat with us</span>
-
-  <a href="https://wa.me/919840465309?text=Hi%20Karpanai%20Studios%2C%20I%20have%20a%20project%20enquiry" 
-     target="_blank" 
-     class="whatsapp-float">
-    <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp">
-  </a>
-</div>
+</body>
+</html>
