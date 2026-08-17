@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UX & Product Design Course — Karpanai Studios</title>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#15130f;
+    --cream:#f6f1e8;
+    --paper:#fffcf6;
+    --text:#211d17;
+    --text-soft:#726a5c;
+    --text-on-ink:#f3ece0;
+    --text-on-ink-soft:#a89c8a;
+    --rust:#a8532b;
+    --rust-deep:#8a4322;
+    --olive:#6f7a52;
+    --line:#e4d9c6;
+    --line-ink:#3a352b;
+    --radius:2px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--cream);color:var(--text);font-family:'Manrope',sans-serif;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+  img{max-width:100%;display:block;}
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 32px;}
+  em{font-family:'Fraunces',serif;font-style:italic;font-weight:400;color:inherit;}
+  .eyebrow{display:flex;align-items:center;gap:12px;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--rust);font-weight:700;margin-bottom:18px;}
+  .eyebrow::before{content:"";width:26px;height:1px;background:var(--rust);display:block;}
+  .eyebrow.on-ink{color:#d9a17f;}
+  .eyebrow.on-ink::before{background:#d9a17f;}
+  .eyebrow.center{justify-content:center;}
+  h1,h2,h3{font-family:'Fraunces',serif;font-weight:500;letter-spacing:-.01em;}
+  section{padding:100px 0;}
+  @media(max-width:720px){section{padding:64px 0;} .wrap{padding:0 22px;}}
+
+  header.site{position:sticky;top:0;z-index:50;background:rgba(21,19,15,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line-ink);}
+  header.site .wrap{display:flex;align-items:center;justify-content:space-between;height:100px;}
+  .logo{font-family:'Fraunces',serif;font-size:20px;letter-spacing:.02em;color:var(--text-on-ink);}
+  .logo span{color:var(--rust);}
+  nav.links{display:flex;gap:36px;font-size:14px;font-weight:600;}
+  nav.links a{color:var(--text-on-ink-soft);transition:color .2s;}
+  nav.links a:hover,nav.links a.active{color:var(--text-on-ink);}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:13px 26px;border-radius:var(--radius);font-size:13.5px;font-weight:700;letter-spacing:.03em;border:1px solid var(--rust);transition:transform .18s ease, background .18s ease, color .18s ease;cursor:pointer;}
+  .btn.solid{background:var(--rust);color:#fff;}
+  .btn.solid:hover{background:var(--rust-deep);transform:translateY(-2px);}
+  .btn.ghost-ink{border-color:#4a4335;color:var(--text-on-ink);}
+  .btn.ghost-ink:hover{border-color:var(--rust);color:#fff;transform:translateY(-2px);}
+  header.site .btn{padding:10px 20px;font-size:13px;}
+
+  /* HERO */
+  .hero{background:var(--ink);color:var(--text-on-ink);position:relative;overflow:hidden;padding:120px 0 100px;}
+  .hero-blob{position:absolute;border-radius:50%;filter:blur(70px);pointer-events:none;}
+  .hero-blob.b1{width:520px;height:520px;background:radial-gradient(circle,#4a463c,transparent 70%);top:-160px;right:-140px;opacity:.5;}
+  .hero-blob.b2{width:420px;height:420px;background:radial-gradient(circle,#3a3630,transparent 70%);bottom:-200px;left:-120px;opacity:.4;}
+  .hero .wrap{position:relative;z-index:2;display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:center;}
+  @media(max-width:900px){.hero .wrap{grid-template-columns:1fr;gap:40px;}}
+  .hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.06);border:1px solid var(--line-ink);padding:9px 18px;border-radius:30px;font-size:13px;color:var(--text-on-ink-soft);margin-bottom:28px;}
+  .hero-badge .dot{width:6px;height:6px;border-radius:50%;background:var(--rust);display:inline-block;}
+  .hero h1{font-size:clamp(34px,4.6vw,54px);line-height:1.12;font-weight:400;}
+  .hero p.lede{max-width:480px;margin:22px 0 0;font-size:16px;color:var(--text-on-ink-soft);}
+  .hero .cta-row{display:flex;gap:16px;margin-top:36px;flex-wrap:wrap;}
+
+  .hero-price-card{background:rgba(255,255,255,.04);border:1px solid var(--line-ink);border-radius:var(--radius);padding:34px;}
+  .hero-price-card .label{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-on-ink-soft);margin-bottom:14px;}
+  .price-row{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;}
+  .price-strike{font-family:'Fraunces',serif;font-size:22px;color:var(--text-on-ink-soft);text-decoration:line-through;text-decoration-color:var(--rust);text-decoration-thickness:2px;}
+  .price-now{font-family:'Fraunces',serif;font-size:46px;color:var(--rust);}
+  .price-save{display:inline-block;margin-top:14px;background:var(--olive);color:#fff;font-size:12px;font-weight:700;letter-spacing:.04em;padding:6px 14px;border-radius:20px;}
+  .price-meta{margin-top:22px;display:grid;grid-template-columns:1fr 1fr;gap:16px;border-top:1px solid var(--line-ink);padding-top:20px;}
+  .price-meta div .k{font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-on-ink-soft);}
+  .price-meta div .v{font-size:14.5px;font-weight:700;margin-top:4px;}
+
+  /* COURSE DETAIL */
+  .course{background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .course .top{max-width:680px;}
+  .course h2{font-size:clamp(28px,3.4vw,40px);line-height:1.2;}
+  .course p.intro{color:var(--text-soft);margin-top:18px;font-size:16px;}
+  .modules{margin-top:56px;display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line);}
+  @media(max-width:720px){.modules{grid-template-columns:1fr;}}
+  .module{background:var(--paper);padding:32px 30px;}
+  .module .tag{font-size:12px;font-weight:700;color:var(--rust);letter-spacing:.05em;text-transform:uppercase;}
+  .module h3{font-size:18px;font-weight:600;margin:12px 0 8px;}
+  .module p{font-size:14px;color:var(--text-soft);}
+
+  /* WEEKEND RHYTHM */
+  .rhythm{background:var(--cream);}
+  .rhythm h2{font-size:clamp(26px,3.2vw,38px);}
+  .rhythm-steps{margin-top:56px;display:grid;grid-template-columns:repeat(3,1fr);gap:40px;}
+  @media(max-width:860px){.rhythm-steps{grid-template-columns:1fr;gap:36px;}}
+  .rhythm-step{border-top:1px solid var(--line);padding-top:20px;}
+  .rhythm-step .day{font-family:'Fraunces',serif;font-style:italic;color:var(--rust);font-size:15px;}
+  .rhythm-step h3{font-size:18px;font-weight:600;margin:10px 0 8px;}
+  .rhythm-step p{font-size:14.5px;color:var(--text-soft);}
+
+  /* OUTCOMES */
+  .outcomes{background:var(--paper);border-top:1px solid var(--line);}
+  .outcomes .wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:70px;align-items:start;}
+  @media(max-width:860px){.outcomes .wrap{grid-template-columns:1fr;gap:36px;}}
+  .outcomes h2{font-size:clamp(26px,3.2vw,38px);line-height:1.2;}
+  .outcomes p.sub{margin-top:16px;color:var(--text-soft);}
+  .outcome-list{display:flex;flex-direction:column;gap:0;}
+  .outcome-item{display:flex;gap:18px;padding:20px 0;border-bottom:1px solid var(--line);}
+  .outcome-item:first-child{padding-top:0;}
+  .outcome-item .mark{font-family:'Fraunces',serif;font-style:italic;color:var(--rust);font-size:20px;flex-shrink:0;}
+  .outcome-item h3{font-size:16px;font-weight:600;margin-bottom:4px;}
+  .outcome-item p{font-size:14px;color:var(--text-soft);}
+
+  /* ENROLL CTA */
+  .enroll{background:var(--ink);color:var(--text-on-ink);text-align:center;}
+  .enroll .wrap{max-width:680px;}
+  .enroll h2{font-size:clamp(26px,4vw,42px);line-height:1.3;font-weight:400;}
+  .enroll p.sub{margin-top:16px;color:var(--text-on-ink-soft);font-size:16px;}
+  .enroll-price{margin-top:30px;display:inline-flex;align-items:baseline;gap:12px;}
+  .enroll-price .strike{font-family:'Fraunces',serif;font-size:18px;color:var(--text-on-ink-soft);text-decoration:line-through;text-decoration-color:var(--rust);}
+  .enroll-price .now{font-family:'Fraunces',serif;font-size:32px;color:var(--rust);}
+  .enroll .cta-row{margin-top:30px;display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
+
+  /* FAQ */
+  .faq .wrap{max-width:800px;}
+  .faq-item{border-bottom:1px solid var(--line);}
+  .faq-item button{width:100%;text-align:left;background:none;border:none;cursor:pointer;padding:22px 0;display:flex;justify-content:space-between;align-items:center;font-family:'Manrope';font-size:16px;font-weight:700;color:var(--text);}
+  .faq-item .plus{font-size:20px;color:var(--rust);transition:transform .25s;font-weight:400;}
+  .faq-item.open .plus{transform:rotate(45deg);}
+  .faq-item .a{max-height:0;overflow:hidden;transition:max-height .3s ease;}
+  .faq-item.open .a{max-height:220px;}
+  .faq-item .a p{padding-bottom:22px;color:var(--text-soft);font-size:14.5px;max-width:620px;}
+
+  footer{background:var(--ink);color:var(--text-on-ink-soft);border-top:1px solid var(--line-ink);}
+  footer .wrap{padding:32px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;font-size:13px;}
+  footer .flinks{display:flex;gap:22px;}
+  footer .flinks a:hover{color:var(--text-on-ink);}
+
+  .whatsapp-fab{position:fixed;bottom:26px;right:26px;width:56px;height:56px;border-radius:50%;background:var(--olive);display:flex;align-items:center;justify-content:center;box-shadow:0 10px 24px -8px rgba(0,0,0,.4);z-index:60;transition:transform .2s;}
+  .whatsapp-fab:hover{transform:scale(1.08);}
+  .whatsapp-fab svg{width:26px;height:26px;fill:#fff;}
+
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease;}
+  .reveal.in{opacity:1;transform:none;}
+  @media (prefers-reduced-motion: reduce){.reveal{opacity:1;transform:none;transition:none;} html{scroll-behavior:auto;}}
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <a href="index.html" class="logo">Karpanai <span>Studios</span></a>
+    <nav class="links">
+      <a href="index.html#story">About</a>
+      <a href="index.html#expertise">Services</a>
+      <a href="#" class="active">Courses</a>
+    </nav>
+    <a href="https://wa.me/919840465309?text=Hi%20Karpanai%20Studios%2C%20I%27d%20like%20to%20know%20more%20about%20the%20UX%20course" class="btn ghost-ink">Enroll Now</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-blob b1"></div>
+  <div class="hero-blob b2"></div>
+  <div class="wrap">
+    <div class="reveal">
+      <div class="hero-badge"><span class="dot"></span>One Course. Full Focus.</div>
+      <h1>Learn UX the way we practice it — <em>on real work.</em></h1>
+      <p class="lede">A live, mentor-led UX & Product Design course from Karpanai Studios. No filler modules — just the research, wireframing, prototyping and portfolio skills that get you hired or freelancing with confidence.</p>
+      <div class="cta-row">
+        <a href="#course" class="btn ghost-ink">See Course Details</a>
+        <a href="https://wa.me/919840465309?text=Hi%20Karpanai%20Studios%2C%20I%27d%20like%20to%20know%20more%20about%20the%20UX%20course" class="btn ghost-ink">Talk to Us</a>
+      </div>
+    </div>
+    <div class="hero-price-card reveal">
+      <div class="label">UX & Product Design Course</div>
+      <div class="price-row">
+        <span class="price-strike">₹75,000</span>
+        <span class="price-now">₹30,000</span>
+      </div>
+      <span class="price-save">Save 60% · Limited Seats</span>
+      <div class="price-meta">
+        <div><div class="k">Format</div><div class="v">Live Online · Weekends</div></div>
+        <div><div class="k">Duration</div><div class="v">8 Weekends</div></div>
+        <div><div class="k">Level</div><div class="v">Beginner → Job-Ready</div></div>
+        <div><div class="k">Mentor</div><div class="v">Karpanai Studios Team</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="course" id="course">
+  <div class="wrap">
+    <div class="top">
+      <div class="eyebrow">The Course</div>
+      <h2>UX & Product Design, taught the way studios actually work.</h2>
+      <p class="intro">Most courses teach tools. This one teaches judgment — how to research a real problem, structure an interface around it, and defend your decisions in a portfolio review. Every weekend ends with something shipped, not just slides.</p>
+    </div>
+    <div class="modules">
+      <div class="module reveal">
+        <div class="tag">Weekends 1–2</div>
+        <h3>UX Foundations & Research</h3>
+        <p>User research methods, personas, journey mapping and problem framing — grounded in a live brief, not a textbook example.</p>
+      </div>
+      <div class="module reveal">
+        <div class="tag">Weekends 3–5</div>
+        <h3>Wireframing & Prototyping in Figma</h3>
+        <p>Information architecture, low-fi to high-fi wireframes, interactive prototypes and a design system built from scratch.</p>
+      </div>
+      <div class="module reveal">
+        <div class="tag">Weekend 6</div>
+        <h3>Visual & Interaction Design</h3>
+        <p>Typography, layout systems, motion and micro-interactions — the craft details that separate usable from memorable.</p>
+      </div>
+      <div class="module reveal">
+        <div class="tag">Weekends 7–8</div>
+        <h3>Capstone & Portfolio</h3>
+        <p>Ship one end-to-end case study, then package it — and yourself — into a portfolio and story ready for interviews or clients.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="rhythm">
+  <div class="wrap">
+    <div class="eyebrow">Inside a Weekend</div>
+    <h2>How the course actually runs.</h2>
+    <div class="rhythm-steps">
+      <div class="rhythm-step reveal">
+        <div class="day">Saturday</div>
+        <h3>Live studio session</h3>
+        <p>A live, instructor-led session walking through the week's concepts with real examples from Karpanai's own client work.</p>
+      </div>
+      <div class="rhythm-step reveal">
+        <div class="day">Sunday</div>
+        <h3>Design lab</h3>
+        <p>Hands-on time in Figma building the week's deliverable, with mentors reviewing work in real time.</p>
+      </div>
+      <div class="rhythm-step reveal">
+        <div class="day">Anytime</div>
+        <h3>Async critique</h3>
+        <p>A dedicated cohort channel for feedback and questions through the week, so your weekdays stay free.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="outcomes">
+  <div class="wrap">
+    <div>
+      <div class="eyebrow">Why This Course</div>
+      <h2>Built by a working studio, not a course factory.</h2>
+      <p class="sub">Karpanai Studios has been designing product and brand experiences since 2010. This course is taught by the same people who take on client briefs — so what you learn is what we actually use.</p>
+    </div>
+    <div class="outcome-list">
+      <div class="outcome-item reveal">
+        <div class="mark">01</div>
+        <div><h3>A portfolio-ready case study</h3><p>Leave with one polished, presentable project — not scattered exercises.</p></div>
+      </div>
+      <div class="outcome-item reveal">
+        <div class="mark">02</div>
+        <div><h3>Direct mentor feedback</h3><p>Small cohorts mean your work gets reviewed, not just graded.</p></div>
+      </div>
+      <div class="outcome-item reveal">
+        <div class="mark">03</div>
+        <div><h3>A certificate on completion</h3><p>Proof of the course, the capstone, and the skills behind both.</p></div>
+      </div>
+      <div class="outcome-item reveal">
+        <div class="mark">04</div>
+        <div><h3>Career & freelance guidance</h3><p>Resume, positioning and pricing guidance for both job-seekers and freelancers.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="faq">
+  <div class="wrap">
+    <div class="eyebrow">FAQ's</div>
+    <h2 style="font-size:clamp(26px,3.4vw,38px);margin-bottom:8px;">Course Questions</h2>
+    <p style="color:var(--text-soft);max-width:520px;">Everything you need to know before enrolling.</p>
+    <div style="margin-top:40px;">
+      <div class="faq-item open">
+        <button>Do I need prior design experience? <span class="plus">+</span></button>
+        <div class="a"><p>No. The course starts from UX fundamentals and is designed for complete beginners as well as those switching careers into design.</p></div>
+      </div>
+      <div class="faq-item">
+        <button>What tools will I need? <span class="plus">+</span></button>
+        <div class="a"><p>Just Figma (free plan works fine) and a laptop. We'll guide you through setup in the first session.</p></div>
+      </div>
+      <div class="faq-item">
+        <button>Is the ₹30,000 fee inclusive of everything? <span class="plus">+</span></button>
+        <div class="a"><p>Yes — the discounted fee of ₹30,000 (down from ₹75,000) covers all 8 weekends, mentor reviews, the capstone project and your certificate.</p></div>
+      </div>
+      <div class="faq-item">
+        <button>What if I miss a live session? <span class="plus">+</span></button>
+        <div class="a"><p>Every session is recorded, and you can catch up with mentor support before the next weekend.</p></div>
+      </div>
+      <div class="faq-item">
+        <button>Is there a certificate? <span class="plus">+</span></button>
+        <div class="a"><p>Yes, a Karpanai Studios certificate is issued on completing the capstone project.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="enroll">
+  <div class="wrap">
+    <div class="eyebrow on-ink center">Ready When You Are</div>
+    <h2>Design your way into a new career, <em>one weekend at a time.</em></h2>
+    <p class="sub">Seats are limited to keep cohorts small and mentorship personal.</p>
+    <div class="enroll-price">
+      <span class="strike">₹75,000</span>
+      <span class="now">₹30,000</span>
+    </div>
+    <div class="cta-row">
+      <a href="https://wa.me/919840465309?text=Hi%20Karpanai%20Studios%2C%20I%27d%20like%20to%20enroll%20in%20the%20UX%20%26%20Product%20Design%20course" class="btn solid">Enroll on WhatsApp</a>
+      <a href="mailto:karpanaistudios@gmail.com" class="btn ghost-ink">Email Us</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 by Sivaraj Rajendran · Karpanai Studios</span>
+    <div class="flinks">
+      <a href="https://www.instagram.com/karpanai.studios/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.linkedin.com/company/karpanai-studios/" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </div>
+</footer>
+
+<a class="whatsapp-fab" href="https://wa.me/919840465309?text=Hi%20Karpanai%20Studios%2C%20I%27d%20like%20to%20know%20more%20about%20the%20UX%20course" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm5.8 14.06c-.24.68-1.4 1.3-1.93 1.38-.5.08-1.13.11-1.82-.11-.42-.13-.96-.31-1.66-.61-2.92-1.26-4.83-4.2-4.98-4.4-.15-.19-1.19-1.58-1.19-3.01 0-1.43.75-2.13 1.02-2.42.26-.29.57-.36.76-.36.19 0 .38 0 .55.01.18.01.42-.07.65.5.24.58.82 2 .89 2.14.07.15.11.32.02.51-.09.19-.14.31-.27.48-.14.17-.29.37-.41.5-.14.14-.28.29-.12.57.16.28.71 1.18 1.53 1.91 1.05.94 1.94 1.24 2.22 1.38.28.14.44.12.6-.07.17-.19.71-.83.9-1.11.19-.28.38-.24.63-.14.26.09 1.64.78 1.92.92.28.14.47.21.53.33.07.12.07.68-.17 1.36z"/></svg>
+</a>
+
+<script>
+  document.querySelectorAll('.faq-item button').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const item = btn.parentElement;
+      const wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
+      if(!wasOpen) item.classList.add('open');
+    });
+  });
+
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  },{threshold:.15});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+
+</body>
+</html>
